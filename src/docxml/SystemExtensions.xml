@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SystemExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:System.ArrayEnumerator`1">
+            <summary>
+            Represents an enumerator type that iterates on each element of an array of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+        </member>
+        <member name="F:System.ArrayEnumerator`1._array">
+            <summary>
+            Indicates the target array.
+            </summary>
+        </member>
+        <member name="F:System.ArrayEnumerator`1._index">
+            <summary>
+            Indicates the index.
+            </summary>
+        </member>
+        <member name="M:System.ArrayEnumerator`1.#ctor(`0[])">
+            <summary>
+            Initializes an <see cref="T:System.ArrayEnumerator`1"/> instance via a list of elements.
+            </summary>
+            <param name="array">An array.</param>
+        </member>
+        <member name="P:System.ArrayEnumerator`1.Current">
+            <inheritdoc cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
+        </member>
+        <member name="P:System.ArrayEnumerator`1.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.ArrayEnumerator`1.System#Collections#Generic#IEnumerator{T}#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.ArrayEnumerator`1.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.ArrayEnumerator`1.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.ArrayEnumerator`1.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.ArrayEnumerator`1.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.ArrayEnumerator`1.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.ArrayEnumerator`1.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Collections.BitArrayExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:System.Collections.BitArray"/>.
+            </summary>
+            <seealso cref="T:System.Collections.BitArray"/>
+        </member>
+        <member name="M:System.Collections.BitArrayExtensions.SequenceEqual(System.Collections.BitArray,System.Collections.BitArray)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:System.Collections.BitArrayExtensions.GetCardinality(System.Collections.BitArray)">
+            <summary>
+            Get the cardinality of the specified <see cref="T:System.Collections.BitArray"/>.
+            </summary>
+            <param name="this">The array.</param>
+            <returns>The total number of bits set <see langword="true"/>.</returns>
+        </member>
+        <member name="M:System.Collections.BitArrayExtensions.GetInternalArrayField(System.Collections.BitArray)">
+            <summary>
+            Try to get internal array field.
+            </summary>
+            <param name="this">The array.</param>
+            <returns>The field.</returns>
+        </member>
+        <member name="T:System.Collections.Entry">
+            <summary>
+            Represents an entry to call internal fields on <see cref="T:System.Collections.BitArray"/>.
+            </summary>
+            <seealso cref="T:System.Collections.BitArray"/>
+        </member>
+        <member name="M:System.Collections.Entry.GetArrayField(System.Collections.BitArray)">
+            <summary>
+            Try to fetch the internal field <c>m_array</c> in type <see cref="T:System.Collections.BitArray" />.
+            </summary>
+            <param name="this">The list.</param>
+            <returns>The reference to the internal field.</returns>
+            <remarks>
+            <!-- Failed to insert some or all of included XML --><include file="../../global-doc-comments.xml" path="//g/dotnet/version[@value='8']/feature[@name='unsafe-accessor']/target[@name='others']" />
+            <!-- Failed to insert some or all of included XML --><include file="../../global-doc-comments.xml" path="//g/dotnet/version[@value='8']/feature[@name='unsafe-accessor']/target[@name='field-related-method']" />
+            </remarks>
+        </member>
+        <member name="T:System.SpanExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:System.ReadOnlySpan`1"/>.
+            </summary>
+            <seealso cref="T:System.ReadOnlySpan`1"/>
+        </member>
+        <member name="M:System.SpanExtensions.All``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Determine whether all elements in a <see cref="T:System.ReadOnlySpan`1"/> satisfy the specified condition.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="this">The sequence.</param>
+            <param name="predicate">The predicate to be checked.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="T:System.Text.StringBuilderExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:System.Text.StringBuilder"/>.
+            </summary>
+            <seealso cref="T:System.Text.StringBuilder"/>
+        </member>
+        <member name="M:System.Text.StringBuilderExtensions.RemoveFrom(System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Remove all characters behind the character whose index is specified.
+            </summary>
+            <param name="this">The instance to remove characters.</param>
+            <param name="startIndex">The start index.</param>
+            <returns>The reference of the current instance.</returns>
+        </member>
+        <member name="M:System.Text.StringBuilderExtensions.RemoveFrom(System.Text.StringBuilder,System.Index)">
+            <summary>
+            Remove all characters behind the character whose index is specified.
+            </summary>
+            <param name="this">The instance to remove characters.</param>
+            <param name="startIndex">The start index.</param>
+            <returns>The reference of the current instance.</returns>
+        </member>
+    </members>
+</doc>

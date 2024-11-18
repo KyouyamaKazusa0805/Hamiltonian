@@ -240,6 +240,9 @@ public sealed partial class Graph :
 	/// <returns>A graph.</returns>
 	public static Graph Empty(int rows, int columns) => Parse($"{rows}:{columns}");
 
+	/// <inheritdoc cref="Parse(string)"/>
+	public static Graph Parse(ReadOnlySpan<char> s) => Parse(s.ToString());
+
 	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
 	/// <remarks>
 	/// <para>

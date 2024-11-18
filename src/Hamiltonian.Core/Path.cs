@@ -42,6 +42,22 @@ public sealed class Path :
 	public int Length => _coordinates.Length;
 
 	/// <summary>
+	/// Indicates the directions of the path.
+	/// </summary>
+	public ReadOnlySpan<Direction> Directions
+	{
+		get
+		{
+			var result = new List<Direction>();
+			for (var i = 0; i < Length - 1; i++)
+			{
+				result.Add(_coordinates[i + 1] - _coordinates[i]);
+			}
+			return result.AsSpan();
+		}
+	}
+
+	/// <summary>
 	/// Returns the backing elements, integrated as a <see cref="ReadOnlySpan{T}"/>.
 	/// </summary>
 	public ReadOnlySpan<Coordinate> Span => _coordinates;

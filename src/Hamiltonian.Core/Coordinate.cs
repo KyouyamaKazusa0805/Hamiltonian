@@ -5,7 +5,9 @@
 /// </summary>
 /// <param name="X">Indicates the row label.</param>
 /// <param name="Y">Indicates the column label.</param>
-public readonly record struct Coordinate(int X, int Y) : IEqualityOperators<Coordinate, Coordinate, bool>
+public readonly record struct Coordinate(int X, int Y) :
+	IEqualityOperators<Coordinate, Coordinate, bool>,
+	ISubtractionOperators<Coordinate, Coordinate, Direction>
 {
 	/// <summary>
 	/// Indicates the up cell.
@@ -54,6 +56,35 @@ public readonly record struct Coordinate(int X, int Y) : IEqualityOperators<Coor
 		return true;
 	}
 
+
+	/// <inheritdoc/>
+	/// <exception cref="InvalidOperationException">
+	/// Throws when the two coordinates has a gap between them, or they cannot see each other in their own direction.
+	/// </exception>
+	public static Direction operator -(Coordinate left, Coordinate right)
+	{
+		if (left == right)
+		{
+			return Direction.None;
+		}
+		else if (left.X - right.X == -1 && left.Y == right.Y)
+		{
+			return Direction.Up;
+		}
+		else if (left.X - right.X == 1 && left.Y == right.Y)
+		{
+			return Direction.Down;
+		}
+		else if (left.X == right.X && left.Y - right.Y == -1)
+		{
+			return Direction.Left;
+		}
+		else if (left.X == right.X && left.Y - right.Y == 1)
+		{
+			return Direction.Right;
+		}
+		throw new InvalidOperationException();
+	}
 
 	/// <summary>
 	/// Moves the coordinate one step forward to the next coordinate by the specified direction.

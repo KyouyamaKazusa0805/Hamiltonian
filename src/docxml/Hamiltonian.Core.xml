@@ -58,6 +58,12 @@
             <param name="graph">The graph.</param>
             <returns>The absolute index.</returns>
         </member>
+        <member name="M:Hamiltonian.Coordinate.op_Subtraction(Hamiltonian.Coordinate,Hamiltonian.Coordinate)">
+            <inheritdoc/>
+            <exception cref="T:System.InvalidOperationException">
+            Throws when the two coordinates has a gap between them, or they cannot see each other in their own direction.
+            </exception>
+        </member>
         <member name="M:Hamiltonian.Coordinate.op_RightShift(Hamiltonian.Coordinate,Hamiltonian.Direction)">
             <summary>
             Moves the coordinate one step forward to the next coordinate by the specified direction.
@@ -134,6 +140,20 @@
             <summary>
             Indicates the direction is right.
             </summary>
+        </member>
+        <member name="T:Hamiltonian.DirectionExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Hamiltonian.Direction"/>.
+            </summary>
+            <seealso cref="T:Hamiltonian.Direction"/>
+        </member>
+        <member name="M:Hamiltonian.DirectionExtensions.GetArrow(Hamiltonian.Direction)">
+            <summary>
+            Gets an arrow text that represents the specified direction.
+            </summary>
+            <param name="this">The direction.</param>
+            <returns>The character.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is out of range.</exception>
         </member>
         <member name="T:Hamiltonian.Generating.Generator">
             <summary>
@@ -399,6 +419,9 @@
             <param name="columns">The columns.</param>
             <returns>A graph.</returns>
         </member>
+        <member name="M:Hamiltonian.Graph.Parse(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:Hamiltonian.Graph.Parse(System.String)"/>
+        </member>
         <member name="M:Hamiltonian.Graph.Parse(System.String)">
             <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
             <remarks>
@@ -534,6 +557,11 @@
         <member name="P:Hamiltonian.Path.Length">
             <summary>
             Indicates the length of the coordinates used.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Path.Directions">
+            <summary>
+            Indicates the directions of the path.
             </summary>
         </member>
         <member name="P:Hamiltonian.Path.Span">

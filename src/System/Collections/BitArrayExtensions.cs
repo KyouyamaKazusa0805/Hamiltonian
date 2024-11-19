@@ -41,14 +41,6 @@ file static class Entry
 	/// </summary>
 	/// <param name="this">The list.</param>
 	/// <returns>The reference to the internal field.</returns>
-	/// <remarks>
-	/// <include
-	///     file="../../global-doc-comments.xml"
-	///     path="//g/dotnet/version[@value='8']/feature[@name='unsafe-accessor']/target[@name='others']"/>
-	/// <include
-	///     file="../../global-doc-comments.xml"
-	///     path="//g/dotnet/version[@value='8']/feature[@name='unsafe-accessor']/target[@name='field-related-method']"/>
-	/// </remarks>
 	[UnsafeAccessor(UnsafeAccessorKind.Field, Name = "m_array")]
 	public static extern ref int[] GetArrayField(BitArray @this);
 }

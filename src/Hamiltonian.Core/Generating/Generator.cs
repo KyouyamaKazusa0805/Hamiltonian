@@ -46,12 +46,9 @@ public readonly ref struct Generator(int rows, int columns)
 	/// Generate a graph puzzle with a unique path, by using the specified cell as the start.
 	/// </summary>
 	/// <param name="start">The start position.</param>
-	/// <param name="end">The end position.</param>
-	/// <param name="path">The uniqueness path of the puzzle.</param>
 	/// <param name="cancellationToken">The cancellation token that can cancel the generation.</param>
 	/// <returns>The result generated. If canceled, <see langword="null"/> will be returned.</returns>
-	[return: NotNullIfNotNull(nameof(path))]
-	public Graph? Generate(Coordinate start, out Coordinate end, out Path? path, CancellationToken cancellationToken = default)
+	public GenerationResult Generate(Coordinate start, CancellationToken cancellationToken = default)
 	{
 		while (true)
 		{
@@ -109,10 +106,7 @@ public readonly ref struct Generator(int rows, int columns)
 			{
 				continue;
 			}
-
-			end = coordinates.Peek();
-			path = resultPath;
-			return graph;
+			return new(true, graph, start, coordinates.Peek(), resultPath);
 
 		NextLoop:
 			if (cancellationToken.IsCancellationRequested)
@@ -120,10 +114,7 @@ public readonly ref struct Generator(int rows, int columns)
 				break;
 			}
 		}
-
-		end = default;
-		path = null;
-		return null;
+		return new(false, default, default, default, default);
 
 
 		static bool booleanCondition(bool element) => !element;

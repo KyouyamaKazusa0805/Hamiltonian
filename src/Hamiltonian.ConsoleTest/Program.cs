@@ -16,9 +16,7 @@ stopwatch.Start();
 for (var count = 1; count <= 200; count++)
 {
 	var startCoordinate = new Coordinate(rng.Next(0, 5), rng.Next(0, 4));
-	var graph = generator.Generate(startCoordinate, out var endCoordinate, out var path);
-	var (sx, sy) = startCoordinate;
-	var (ex, ey) = endCoordinate;
+	var (_, graph, (sx, sy), (ex, ey), path) = generator.Generate(startCoordinate);
 	var degreeFreq = Degree.GetDegreeFrequency(graph!);
 	var directions = string.Concat(from element in path!.Directions select element.GetArrow().ToString());
 	sw.WriteLine($"{graph:bs}\t{sx}\t{sy}\t{ex}\t{ey}\t{directions}\t{(degreeFreq.TryGetValue(3, out var r) ? r : 0)}");

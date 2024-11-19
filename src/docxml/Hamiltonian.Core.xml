@@ -155,6 +155,41 @@
             <returns>The character.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is out of range.</exception>
         </member>
+        <member name="T:Hamiltonian.Generating.GenerationResult">
+            <summary>
+            Represents a generation result.
+            </summary>
+            <param name="Success">Indicates whether the generated result is successful.</param>
+            <param name="Graph">Indicates the graph generated.</param>
+            <param name="Start">Indicates the start position.</param>
+            <param name="End">Indicates the end position.</param>
+            <param name="Path">Indicates the path.</param>
+        </member>
+        <member name="M:Hamiltonian.Generating.GenerationResult.#ctor(System.Boolean,Hamiltonian.Graph,Hamiltonian.Coordinate,Hamiltonian.Coordinate,Hamiltonian.Path)">
+            <summary>
+            Represents a generation result.
+            </summary>
+            <param name="Success">Indicates whether the generated result is successful.</param>
+            <param name="Graph">Indicates the graph generated.</param>
+            <param name="Start">Indicates the start position.</param>
+            <param name="End">Indicates the end position.</param>
+            <param name="Path">Indicates the path.</param>
+        </member>
+        <member name="P:Hamiltonian.Generating.GenerationResult.Success">
+            <summary>Indicates whether the generated result is successful.</summary>
+        </member>
+        <member name="P:Hamiltonian.Generating.GenerationResult.Graph">
+            <summary>Indicates the graph generated.</summary>
+        </member>
+        <member name="P:Hamiltonian.Generating.GenerationResult.Start">
+            <summary>Indicates the start position.</summary>
+        </member>
+        <member name="P:Hamiltonian.Generating.GenerationResult.End">
+            <summary>Indicates the end position.</summary>
+        </member>
+        <member name="P:Hamiltonian.Generating.GenerationResult.Path">
+            <summary>Indicates the path.</summary>
+        </member>
         <member name="T:Hamiltonian.Generating.Generator">
             <summary>
             Represents a generator that can generate a <see cref="T:Hamiltonian.Graph"/> instance with a unique path.
@@ -200,13 +235,11 @@
         <member name="M:Hamiltonian.Generating.Generator.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Hamiltonian.Generating.Generator.Generate(Hamiltonian.Coordinate,Hamiltonian.Coordinate@,Hamiltonian.Path@,System.Threading.CancellationToken)">
+        <member name="M:Hamiltonian.Generating.Generator.Generate(Hamiltonian.Coordinate,System.Threading.CancellationToken)">
             <summary>
             Generate a graph puzzle with a unique path, by using the specified cell as the start.
             </summary>
             <param name="start">The start position.</param>
-            <param name="end">The end position.</param>
-            <param name="path">The uniqueness path of the puzzle.</param>
             <param name="cancellationToken">The cancellation token that can cancel the generation.</param>
             <returns>The result generated. If canceled, <see langword="null"/> will be returned.</returns>
         </member>

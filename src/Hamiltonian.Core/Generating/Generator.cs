@@ -46,15 +46,31 @@ public readonly ref struct Generator(int rows, int columns)
 	/// Generate a graph puzzle with a unique path, by using the specified cell as the start.
 	/// </summary>
 	/// <param name="start">The start position.</param>
+	/// <param name="minFillingRate">Indicates the minimum filling rate.</param>
+	/// <param name="maxFillingRate">Indicates the maximum filling rate.</param>
 	/// <param name="cancellationToken">The cancellation token that can cancel the generation.</param>
 	/// <returns>The result generated. If canceled, <see langword="null"/> will be returned.</returns>
-	public GenerationResult Generate(Coordinate start, CancellationToken cancellationToken = default)
+	/// <exception cref="ArgumentOutOfRangeException">
+	/// Throws when the <paramref name="minFillingRate"/> or <paramref name="maxFillingRate"/> is invalid.
+	/// </exception>
+	public GenerationResult Generate(
+		Coordinate start,
+		double minFillingRate,
+		double maxFillingRate,
+		CancellationToken cancellationToken = default
+	)
 	{
+		ArgumentOutOfRangeException.ThrowIfLessThan(minFillingRate, 0);
+		ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(minFillingRate, 1);
+		ArgumentOutOfRangeException.ThrowIfLessThan(maxFillingRate, 0);
+		ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(maxFillingRate, 1);
+		ArgumentOutOfRangeException.ThrowIfEqual(minFillingRate > maxFillingRate, true);
+
 		while (true)
 		{
 			var graph = new Graph(RowsLength, ColumnsLength);
 			var coordinates = new Stack<Coordinate>();
-			var size = _random.Next((int)(RowsLength * ColumnsLength * .7), (int)(RowsLength * ColumnsLength * .8));
+			var size = _random.Next((int)(RowsLength * ColumnsLength * minFillingRate), (int)(RowsLength * ColumnsLength * maxFillingRate));
 			try
 			{
 				dfs(in this, graph, start, start, coordinates, size, cancellationToken);

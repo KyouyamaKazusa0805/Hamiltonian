@@ -3,8 +3,10 @@
 /// <summary>
 /// Represents a generator that can generate a <see cref="Graph"/> instance with a unique path.
 /// </summary>
+/// <param name="rows">The number of rows.</param>
+/// <param name="columns">The number of columns.</param>
 /// <seealso cref="Graph"/>
-public readonly ref struct Generator
+public readonly ref struct Generator(int rows, int columns)
 {
 	/// <summary>
 	/// Indicates the random number generator.
@@ -18,22 +20,14 @@ public readonly ref struct Generator
 
 
 	/// <summary>
-	/// Initializes a <see cref="Generator"/> instance.
-	/// </summary>
-	/// <param name="rows">The number of rows.</param>
-	/// <param name="columns">The number of columns.</param>
-	public Generator(int rows, int columns) => (RowsLength, ColumnsLength) = (rows, columns);
-
-
-	/// <summary>
 	/// Indicates the number of rows should be generated.
 	/// </summary>
-	public int RowsLength { get; }
+	public int RowsLength { get; } = rows;
 
 	/// <summary>
 	/// Indicates the number of columns should be generated.
 	/// </summary>
-	public int ColumnsLength { get; }
+	public int ColumnsLength { get; } = columns;
 
 
 	/// <inheritdoc/>

@@ -159,6 +159,16 @@
             <summary>
             Represents a generator that can generate a <see cref="T:Hamiltonian.Graph"/> instance with a unique path.
             </summary>
+            <param name="rows">The number of rows.</param>
+            <param name="columns">The number of columns.</param>
+            <seealso cref="T:Hamiltonian.Graph"/>
+        </member>
+        <member name="M:Hamiltonian.Generating.Generator.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Represents a generator that can generate a <see cref="T:Hamiltonian.Graph"/> instance with a unique path.
+            </summary>
+            <param name="rows">The number of rows.</param>
+            <param name="columns">The number of columns.</param>
             <seealso cref="T:Hamiltonian.Graph"/>
         </member>
         <member name="F:Hamiltonian.Generating.Generator._random">
@@ -170,13 +180,6 @@
             <summary>
             Indicates the backing solver.
             </summary>
-        </member>
-        <member name="M:Hamiltonian.Generating.Generator.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Initializes a <see cref="T:Hamiltonian.Generating.Generator"/> instance.
-            </summary>
-            <param name="rows">The number of rows.</param>
-            <param name="columns">The number of columns.</param>
         </member>
         <member name="P:Hamiltonian.Generating.Generator.RowsLength">
             <summary>

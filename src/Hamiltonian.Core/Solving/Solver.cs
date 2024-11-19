@@ -13,7 +13,7 @@ public sealed class Solver
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
 	public bool IsValid(Graph graph, [NotNullWhen(true)] out Path? result)
 	{
-		if (graph == Graph.Empty(graph.RowsLength, graph.ColumnsLength))
+		if (graph.IsEmpty)
 		{
 			// No cells chosen.
 			result = null;
@@ -43,7 +43,7 @@ public sealed class Solver
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
 	public bool IsValid(Graph graph, Coordinate start, Coordinate? end, [NotNullWhen(true)] out Path? result)
 	{
-		if (graph == Graph.Empty(graph.RowsLength, graph.ColumnsLength))
+		if (graph.IsEmpty)
 		{
 			// No cells chosen.
 			result = null;

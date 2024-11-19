@@ -57,10 +57,14 @@ public readonly ref struct Generator(int rows, int columns)
 		{
 			var graph = new Graph(RowsLength, ColumnsLength);
 			var coordinates = new Stack<Coordinate>();
-			var size = _random.Next(RowsLength * ColumnsLength >> 1, (int)(RowsLength * ColumnsLength * .75));
+			var size = _random.Next((int)(RowsLength * ColumnsLength * .7), (int)(RowsLength * ColumnsLength * .8));
 			try
 			{
 				dfs(in this, graph, start, start, coordinates, size, cancellationToken);
+				if (graph.IsEmpty)
+				{
+					continue;
+				}
 			}
 			catch (OperationCanceledException)
 			{

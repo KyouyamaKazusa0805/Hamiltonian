@@ -625,12 +625,12 @@
         <member name="M:Hamiltonian.Path.op_Inequality(Hamiltonian.Path,Hamiltonian.Path)">
             <inheritdoc/>
         </member>
-        <member name="T:Hamiltonian.Solver">
+        <member name="T:Hamiltonian.Solving.Solver">
             <summary>
             Provides a way to verify validity of a Hamiltonian graph.
             </summary>
         </member>
-        <member name="M:Hamiltonian.Solver.IsValid(Hamiltonian.Graph,Hamiltonian.Path@)">
+        <member name="M:Hamiltonian.Solving.Solver.IsValid(Hamiltonian.Graph,Hamiltonian.Path@)">
             <summary>
             Determine whether the specified graph has a unique path.
             </summary>
@@ -638,7 +638,7 @@
             <param name="result">Indicates the result of the path.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Hamiltonian.Solver.IsValid(Hamiltonian.Graph,Hamiltonian.Coordinate,System.Nullable{Hamiltonian.Coordinate},Hamiltonian.Path@)">
+        <member name="M:Hamiltonian.Solving.Solver.IsValid(Hamiltonian.Graph,Hamiltonian.Coordinate,System.Nullable{Hamiltonian.Coordinate},Hamiltonian.Path@)">
             <summary>
             Determine whether the specified graph has a unique path, from the specified cell as the start,
             to the specified cell as the end.

@@ -10,9 +10,9 @@
 *.userosscache
 *.sln.docstates
 
-# User-specific files (MonoDevelop/Xamarin Studio)
+# User-specific files
 *.userprefs
-src/Hamiltonian.ConsoleTest/
+[Ss]rc/Hamiltonian.ConsoleTest/
 
 # Mono auto generated files
 mono_crash.*

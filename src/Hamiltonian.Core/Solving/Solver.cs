@@ -1,4 +1,4 @@
-﻿namespace Hamiltonian;
+﻿namespace Hamiltonian.Solving;
 
 /// <summary>
 /// Provides a way to verify validity of a Hamiltonian graph.

@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using Hamiltonian;
 using Hamiltonian.Generating;
+using Hamiltonian.Solving;
 
 var generator = new Generator(9, 7);
 var rng = Random.Shared;

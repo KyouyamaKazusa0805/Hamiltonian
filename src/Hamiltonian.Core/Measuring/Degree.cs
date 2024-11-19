@@ -34,4 +34,36 @@ public static class Degree
 		}
 		return result;
 	}
+
+	/// <summary>
+	/// Gets a dictionary that describes the times of appearing of nodes of the specified degree.
+	/// </summary>
+	/// <param name="graph">The graph.</param>
+	/// <returns>The dictionary that describes the times of appearing.</returns>
+	public static FrozenDictionary<int, int> GetDegreeFrequency(Graph graph)
+	{
+		var result = new Dictionary<int, int>(4);
+		foreach (var cell in graph.EnumerateCoordinates())
+		{
+			var times = 0;
+			if (!cell.Up.IsOutOfBound(graph) && graph[cell.Up])
+			{
+				times++;
+			}
+			if (!cell.Down.IsOutOfBound(graph) && graph[cell.Down])
+			{
+				times++;
+			}
+			if (!cell.Left.IsOutOfBound(graph) && graph[cell.Left])
+			{
+				times++;
+			}
+			if (!cell.Right.IsOutOfBound(graph) && graph[cell.Right])
+			{
+				times++;
+			}
+			CollectionsMarshal.GetValueRefOrAddDefault(result, times, out _)++;
+		}
+		return result.ToFrozenDictionary();
+	}
 }

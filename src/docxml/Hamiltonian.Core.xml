@@ -523,6 +523,13 @@
             <param name="graph">The graph.</param>
             <returns>The sum degree value.</returns>
         </member>
+        <member name="M:Hamiltonian.Measuring.Degree.GetDegreeFrequency(Hamiltonian.Graph)">
+            <summary>
+            Gets a dictionary that describes the times of appearing of nodes of the specified degree.
+            </summary>
+            <param name="graph">The graph.</param>
+            <returns>The dictionary that describes the times of appearing.</returns>
+        </member>
         <member name="T:Hamiltonian.Measuring.PathEntropy">
             <summary>
             Represents a rater for path entropy (i.e. the number of switching on rows and columns).

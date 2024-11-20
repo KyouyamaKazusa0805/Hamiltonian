@@ -3,9 +3,11 @@
 /// <summary>
 /// Provides a path of a Hamiltonian graph.
 /// </summary>
+[CollectionBuilder(typeof(Path), nameof(Create))]
 public sealed class Path :
 	IEquatable<Path>,
 	IEqualityOperators<Path, Path, bool>,
+	IParsable<Path>,
 	IReadOnlyCollection<Coordinate>,
 	IReadOnlyList<Coordinate>
 {
@@ -136,6 +138,78 @@ public sealed class Path :
 
 	/// <inheritdoc/>
 	IEnumerator<Coordinate> IEnumerable<Coordinate>.GetEnumerator() => ((IEnumerable<Coordinate>)_coordinates).GetEnumerator();
+
+
+	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
+	public static bool TryParse(string str, [NotNullWhen(true)] out Path? result)
+	{
+		try
+		{
+			result = Parse(str);
+			return true;
+		}
+		catch (FormatException)
+		{
+			result = null;
+			return false;
+		}
+	}
+
+	/// <inheritdoc cref="Parse(string)"/>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static Path Parse(ReadOnlySpan<char> str) => Parse(str);
+
+	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
+	public static Path Parse(string str)
+	{
+		// Example:
+		// 00:↓↓↓→→→↓↓←↑←←↓↓→↓←↓→→↑→↓→→↑↑←↑→→↑↑←←↑↑→↑←←↓←
+
+		var split = str.Split(':', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+		var startCoordinateStr = split[0];
+		var startCoordinate = new Coordinate(startCoordinateStr[0] - '0', startCoordinateStr[1] - '0');
+		var coordinates = new List<Coordinate> { startCoordinate };
+		var currentCoordinate = startCoordinate;
+		foreach (var character in split[1])
+		{
+			currentCoordinate = character switch
+			{
+				'↑' => currentCoordinate.Up,
+				'↓' => currentCoordinate.Down,
+				'←' => currentCoordinate.Left,
+				'→' => currentCoordinate.Right,
+				_ => throw new FormatException()
+			};
+			coordinates.Add(currentCoordinate);
+		}
+		return [.. coordinates];
+	}
+
+	/// <summary>
+	/// Creates a <see cref="Path"/> instance via the specified coordinates.
+	/// </summary>
+	/// <param name="coordinates">A list of coordinates.</param>
+	/// <returns>A <see cref="Path"/> instance.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public static Path Create(ReadOnlySpan<Coordinate> coordinates) => new([.. coordinates]);
+
+	/// <inheritdoc/>
+	static Path IParsable<Path>.Parse(string s, IFormatProvider? provider) => Parse(s);
+
+	/// <inheritdoc/>
+	static bool IParsable<Path>.TryParse(string? s, IFormatProvider? provider, [NotNullWhen(true)] out Path? result)
+	{
+		if (s is null)
+		{
+			result = null;
+			return false;
+		}
+		else
+		{
+			return TryParse(s, out result);
+		}
+	}
 
 
 	/// <inheritdoc/>

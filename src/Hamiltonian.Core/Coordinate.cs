@@ -10,24 +10,24 @@ public readonly record struct Coordinate(int X, int Y) :
 	ISubtractionOperators<Coordinate, Coordinate, Direction>
 {
 	/// <summary>
-	/// Indicates the up cell.
-	/// </summary>
-	public Coordinate Up => new(X, Y - 1);
-
-	/// <summary>
-	/// Indicates the down cell.
-	/// </summary>
-	public Coordinate Down => new(X, Y + 1);
-
-	/// <summary>
 	/// Indicates the left cell.
 	/// </summary>
-	public Coordinate Left => new(X - 1, Y);
+	public Coordinate Up => new(X - 1, Y);
 
 	/// <summary>
 	/// Indicates the right cell.
 	/// </summary>
-	public Coordinate Right => new(X + 1, Y);
+	public Coordinate Down => new(X + 1, Y);
+
+	/// <summary>
+	/// Indicates the up cell.
+	/// </summary>
+	public Coordinate Left => new(X, Y - 1);
+
+	/// <summary>
+	/// Indicates the down cell.
+	/// </summary>
+	public Coordinate Right => new(X, Y + 1);
 
 
 	/// <summary>

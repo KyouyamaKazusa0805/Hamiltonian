@@ -26,22 +26,22 @@
         </member>
         <member name="P:Hamiltonian.Coordinate.Up">
             <summary>
-            Indicates the up cell.
+            Indicates the left cell.
             </summary>
         </member>
         <member name="P:Hamiltonian.Coordinate.Down">
             <summary>
-            Indicates the down cell.
+            Indicates the right cell.
             </summary>
         </member>
         <member name="P:Hamiltonian.Coordinate.Left">
             <summary>
-            Indicates the left cell.
+            Indicates the up cell.
             </summary>
         </member>
         <member name="P:Hamiltonian.Coordinate.Right">
             <summary>
-            Indicates the right cell.
+            Indicates the down cell.
             </summary>
         </member>
         <member name="M:Hamiltonian.Coordinate.IsOutOfBound(Hamiltonian.Graph)">
@@ -669,6 +669,28 @@
             <inheritdoc/>
         </member>
         <member name="M:Hamiltonian.Path.System#Collections#Generic#IEnumerable{Hamiltonian#Coordinate}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Path.TryParse(System.String,Hamiltonian.Path@)">
+            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Hamiltonian.Path.Parse(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:Hamiltonian.Path.Parse(System.String)"/>
+        </member>
+        <member name="M:Hamiltonian.Path.Parse(System.String)">
+            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Hamiltonian.Path.Create(System.ReadOnlySpan{Hamiltonian.Coordinate})">
+            <summary>
+            Creates a <see cref="T:Hamiltonian.Path"/> instance via the specified coordinates.
+            </summary>
+            <param name="coordinates">A list of coordinates.</param>
+            <returns>A <see cref="T:Hamiltonian.Path"/> instance.</returns>
+        </member>
+        <member name="M:Hamiltonian.Path.System#IParsable{Hamiltonian#Path}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Path.System#IParsable{Hamiltonian#Path}#TryParse(System.String,System.IFormatProvider,Hamiltonian.Path@)">
             <inheritdoc/>
         </member>
         <member name="M:Hamiltonian.Path.op_Equality(Hamiltonian.Path,Hamiltonian.Path)">

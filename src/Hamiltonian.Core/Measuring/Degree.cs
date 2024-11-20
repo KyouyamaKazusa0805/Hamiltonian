@@ -30,7 +30,11 @@ public static class Degree
 		var result = new Dictionary<int, int>(4);
 		foreach (var coordinate in graph.EnumerateCoordinates())
 		{
-			CollectionsMarshal.GetValueRefOrAddDefault(result, graph.GetDegreeAt(coordinate), out _)++;
+			var degree = graph.GetDegreeAt(coordinate);
+			if (!result.TryAdd(degree, 1))
+			{
+				result[degree]++;
+			}
 		}
 		return result.ToFrozenDictionary();
 	}

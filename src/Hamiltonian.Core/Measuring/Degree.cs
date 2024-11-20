@@ -13,24 +13,9 @@ public static class Degree
 	public static int GetDegreeSum(Graph graph)
 	{
 		var result = 0;
-		foreach (var cell in graph.EnumerateCoordinates())
+		foreach (var coordinate in graph.EnumerateCoordinates())
 		{
-			if (!cell.Up.IsOutOfBound(graph) && graph[cell.Up])
-			{
-				result++;
-			}
-			if (!cell.Down.IsOutOfBound(graph) && graph[cell.Down])
-			{
-				result++;
-			}
-			if (!cell.Left.IsOutOfBound(graph) && graph[cell.Left])
-			{
-				result++;
-			}
-			if (!cell.Right.IsOutOfBound(graph) && graph[cell.Right])
-			{
-				result++;
-			}
+			result += graph.GetDegreeAt(coordinate);
 		}
 		return result;
 	}
@@ -43,26 +28,9 @@ public static class Degree
 	public static FrozenDictionary<int, int> GetDegreeFrequency(Graph graph)
 	{
 		var result = new Dictionary<int, int>(4);
-		foreach (var cell in graph.EnumerateCoordinates())
+		foreach (var coordinate in graph.EnumerateCoordinates())
 		{
-			var times = 0;
-			if (!cell.Up.IsOutOfBound(graph) && graph[cell.Up])
-			{
-				times++;
-			}
-			if (!cell.Down.IsOutOfBound(graph) && graph[cell.Down])
-			{
-				times++;
-			}
-			if (!cell.Left.IsOutOfBound(graph) && graph[cell.Left])
-			{
-				times++;
-			}
-			if (!cell.Right.IsOutOfBound(graph) && graph[cell.Right])
-			{
-				times++;
-			}
-			CollectionsMarshal.GetValueRefOrAddDefault(result, times, out _)++;
+			CollectionsMarshal.GetValueRefOrAddDefault(result, graph.GetDegreeAt(coordinate), out _)++;
 		}
 		return result.ToFrozenDictionary();
 	}

@@ -1,20 +1,30 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
+using System.Text;
 using Hamiltonian;
-using Hamiltonian.Generating;
-using Hamiltonian.Measuring;
 using Hamiltonian.Solving;
 
-var generator = new Generator(9, 7);
-var rng = Random.Shared;
+var sb = new StringBuilder();
 var solver = new Solver();
-using var sw = new StreamWriter($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\output.csv");
-while (true)
+using var sw = new StreamWriter(@"C:\Users\admin\Desktop\output.txt");
+var stopwatch = new Stopwatch();
+stopwatch.Start();
+var i = 1;
+foreach (var line in File.ReadLines(@"C:\Users\admin\Desktop\一笔画.txt"))
 {
-	var startCoordinate = new Coordinate(rng.Next(0, 5), rng.Next(0, 4));
-	var (_, graph, (sx, sy), (ex, ey), path) = generator.Generate(startCoordinate, .7, .8);
-	var degreeFreq = Degree.GetDegreeFrequency(graph!);
-	var directions = string.Concat(from element in path!.Directions select element.GetArrow().ToString());
-	sw.WriteLine($"{graph:bs}\t{sx}\t{sy}\t{ex}\t{ey}\t{directions}\t{(degreeFreq.TryGetValue(3, out var r) ? r : 0)}");
+	var split = line.Split('\t');
+	var graph = Graph.Parse(split[0]);
+	var path = solver.Solve(graph, new(int.Parse(split[1]), int.Parse(split[2])));
+
+	sb.Clear();
+	foreach (var coordinate in path)
+	{
+		sb.Append($"{coordinate.X}{coordinate.Y}{graph.GetDegreeAt(coordinate)}");
+	}
+	sw.WriteLine($"{graph:bs}\t{sb}");
+
+	Console.Clear();
+	Console.WriteLine($@"Progress: {i / (40350.0 - 27139):P3}, Elapsed: {stopwatch.Elapsed:hh\:mm\:ss\.fff}");
+	i++;
 }

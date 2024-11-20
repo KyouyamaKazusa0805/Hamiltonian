@@ -6,6 +6,21 @@
 public sealed class Solver
 {
 	/// <summary>
+	/// Solve the current graph and return a path.
+	/// </summary>
+	/// <param name="graph">The graph.</param>
+	/// <param name="start">The start coordinate.</param>
+	/// <returns>The path describing the details of steps advanced.</returns>
+	/// <exception cref="InvalidOperationException">Throws when the puzzle is invalid.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public Path Solve(Graph graph, Coordinate start)
+		=> graph.IsEmpty
+			? new()
+			: IsValid(graph, start, null, out var result)
+				? result
+				: throw new InvalidOperationException("The puzzle has no valid solution.");
+
+	/// <summary>
 	/// Determine whether the specified graph has a unique path.
 	/// </summary>
 	/// <param name="graph">Indicates the graph.</param>

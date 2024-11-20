@@ -113,6 +113,34 @@ public sealed partial class Graph :
 		return hashCode.ToHashCode();
 	}
 
+	/// <summary>
+	/// Gets the degree value at the specified coordinate.
+	/// </summary>
+	/// <param name="coordinate">The coordinate.</param>
+	/// <returns>The degree value. The return value must be 2, 3 or 4.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public int GetDegreeAt(Coordinate coordinate)
+	{
+		var result = 0;
+		if (!coordinate.Up.IsOutOfBound(this) && this[coordinate.Up])
+		{
+			result++;
+		}
+		if (!coordinate.Down.IsOutOfBound(this) && this[coordinate.Down])
+		{
+			result++;
+		}
+		if (!coordinate.Left.IsOutOfBound(this) && this[coordinate.Left])
+		{
+			result++;
+		}
+		if (!coordinate.Right.IsOutOfBound(this) && this[coordinate.Right])
+		{
+			result++;
+		}
+		return result;
+	}
+
 	/// <inheritdoc/>
 	public override string ToString() => ToString("b");
 

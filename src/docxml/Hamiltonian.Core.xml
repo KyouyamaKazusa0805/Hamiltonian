@@ -399,6 +399,13 @@
         <member name="M:Hamiltonian.Graph.GetHashCode">
             <inheritdoc/>
         </member>
+        <member name="M:Hamiltonian.Graph.GetDegreeAt(Hamiltonian.Coordinate)">
+            <summary>
+            Gets the degree value at the specified coordinate.
+            </summary>
+            <param name="coordinate">The coordinate.</param>
+            <returns>The degree value. The return value must be 2, 3 or 4.</returns>
+        </member>
         <member name="M:Hamiltonian.Graph.ToString">
             <inheritdoc/>
         </member>
@@ -674,6 +681,15 @@
             <summary>
             Provides a way to verify validity of a Hamiltonian graph.
             </summary>
+        </member>
+        <member name="M:Hamiltonian.Solving.Solver.Solve(Hamiltonian.Graph,Hamiltonian.Coordinate)">
+            <summary>
+            Solve the current graph and return a path.
+            </summary>
+            <param name="graph">The graph.</param>
+            <param name="start">The start coordinate.</param>
+            <returns>The path describing the details of steps advanced.</returns>
+            <exception cref="T:System.InvalidOperationException">Throws when the puzzle is invalid.</exception>
         </member>
         <member name="M:Hamiltonian.Solving.Solver.IsValid(Hamiltonian.Graph,Hamiltonian.Path@)">
             <summary>

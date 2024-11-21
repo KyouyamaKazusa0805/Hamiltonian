@@ -57,15 +57,25 @@ public static class GraphTransformation
 	}
 
 	/// <summary>
+	/// Rotate a graph 180 degrees.
+	/// </summary>
+	/// <param name="graph">The graph.</param>
+	/// <returns>The result.</returns>
+	/// <remarks><i>This method just calls method <see cref="RotateClockwise(Graph)"/> twice.</i></remarks>
+	/// <seealso cref="RotateClockwise(Graph)"/>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static Graph RotatePi(this Graph graph) => graph.RotateClockwise().RotateClockwise();
+
+	/// <summary>
 	/// Mirror left-right the graph.
 	/// </summary>
 	/// <param name="graph">The graph.</param>
 	/// <returns>The result graph mirrored.</returns>
 	public static Graph MirrorLeftRight(this Graph graph)
 	{
-		var result = graph.Clone();
 		var rows = graph.RowsLength;
 		var columns = graph.ColumnsLength;
+		var result = new Graph(rows, columns);
 		for (var i = 0; i < rows; i++)
 		{
 			for (var j = 0; j < columns; j++)
@@ -83,14 +93,60 @@ public static class GraphTransformation
 	/// <returns>The result graph mirrored.</returns>
 	public static Graph MirrorTopBottom(this Graph graph)
 	{
-		var result = graph.Clone();
 		var rows = graph.RowsLength;
 		var columns = graph.ColumnsLength;
+		var result = new Graph(rows, columns);
 		for (var i = 0; i < rows; i++)
 		{
 			for (var j = 0; j < columns; j++)
 			{
 				result[i * columns + j] = graph[(columns - 1 - i) * columns + j];
+			}
+		}
+		return result;
+	}
+
+	/// <summary>
+	/// Mirror diagonal the graph, or throws <see cref="ArgumentOutOfRangeException"/> if the graph is not a square.
+	/// </summary>
+	/// <param name="graph">The graph.</param>
+	/// <returns>The result graph mirrored.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Throws when the graph is not square.</exception>
+	public static Graph MirrorDiagonal(this Graph graph)
+	{
+		ArgumentOutOfRangeException.ThrowIfNotEqual(graph.IsSquare, true);
+
+		var rows = graph.RowsLength;
+		var columns = graph.ColumnsLength;
+		var result = new Graph(rows, columns);
+		for (var i = 0; i < rows; i++)
+		{
+			for (var j = 0; j < columns; j++)
+			{
+				result[i * columns + j] = graph[j * columns + i];
+			}
+		}
+		return result;
+	}
+
+	/// <summary>
+	/// Mirror anti-diagonal the graph, or throws <see cref="ArgumentOutOfRangeException"/> if the graph is not a square.
+	/// </summary>
+	/// <param name="graph">The graph.</param>
+	/// <returns>The result graph mirrored.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Throws when the graph is not square.</exception>
+	public static Graph MirrorAntidiagonal(this Graph graph)
+	{
+		ArgumentOutOfRangeException.ThrowIfNotEqual(graph.IsSquare, true);
+
+		var rows = graph.RowsLength;
+		var columns = graph.ColumnsLength;
+		var result = new Graph(rows, columns);
+		for (var i = 0; i < rows; i++)
+		{
+			for (var j = 0; j < columns; j++)
+			{
+				result[i * columns + j] = graph[(columns - 1 - j) * columns + (columns - 1 - i)];
 			}
 		}
 		return result;

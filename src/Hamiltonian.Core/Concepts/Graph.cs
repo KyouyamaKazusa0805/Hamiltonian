@@ -69,6 +69,11 @@ public sealed partial class Graph :
 	public bool IsEmpty => Length == 0;
 
 	/// <summary>
+	/// Indicates whether the graph is square.
+	/// </summary>
+	public bool IsSquare => RowsLength == ColumnsLength;
+
+	/// <summary>
 	/// Indicates the number of cells used.
 	/// </summary>
 	public int Length => _sequence.GetCardinality();

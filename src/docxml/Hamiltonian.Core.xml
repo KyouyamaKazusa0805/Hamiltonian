@@ -243,6 +243,11 @@
             Indicates whether the graph is empty.
             </summary>
         </member>
+        <member name="P:Hamiltonian.Concepts.Graph.IsSquare">
+            <summary>
+            Indicates whether the graph is square.
+            </summary>
+        </member>
         <member name="P:Hamiltonian.Concepts.Graph.Length">
             <summary>
             Indicates the number of cells used.
@@ -788,6 +793,15 @@
             <param name="graph">The graph.</param>
             <returns>The result.</returns>
         </member>
+        <member name="M:Hamiltonian.Transforming.GraphTransformation.RotatePi(Hamiltonian.Concepts.Graph)">
+            <summary>
+            Rotate a graph 180 degrees.
+            </summary>
+            <param name="graph">The graph.</param>
+            <returns>The result.</returns>
+            <remarks><i>This method just calls method <see cref="M:Hamiltonian.Transforming.GraphTransformation.RotateClockwise(Hamiltonian.Concepts.Graph)"/> twice.</i></remarks>
+            <seealso cref="M:Hamiltonian.Transforming.GraphTransformation.RotateClockwise(Hamiltonian.Concepts.Graph)"/>
+        </member>
         <member name="M:Hamiltonian.Transforming.GraphTransformation.MirrorLeftRight(Hamiltonian.Concepts.Graph)">
             <summary>
             Mirror left-right the graph.
@@ -801,6 +815,22 @@
             </summary>
             <param name="graph">The graph.</param>
             <returns>The result graph mirrored.</returns>
+        </member>
+        <member name="M:Hamiltonian.Transforming.GraphTransformation.MirrorDiagonal(Hamiltonian.Concepts.Graph)">
+            <summary>
+            Mirror diagonal the graph, or throws <see cref="T:System.ArgumentOutOfRangeException"/> if the graph is not a square.
+            </summary>
+            <param name="graph">The graph.</param>
+            <returns>The result graph mirrored.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when the graph is not square.</exception>
+        </member>
+        <member name="M:Hamiltonian.Transforming.GraphTransformation.MirrorAntidiagonal(Hamiltonian.Concepts.Graph)">
+            <summary>
+            Mirror anti-diagonal the graph, or throws <see cref="T:System.ArgumentOutOfRangeException"/> if the graph is not a square.
+            </summary>
+            <param name="graph">The graph.</param>
+            <returns>The result graph mirrored.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when the graph is not square.</exception>
         </member>
         <member name="T:System.Text.RegularExpressions.Generated.ParsingFormatPattern_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the ParsingFormatPattern method.</summary>

@@ -16,8 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemExtensions", "src\System\SystemExtensions.csproj", "{417BC313-8F13-4F74-8E47-7A7C8E2BA232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamiltonian.ConsoleTest", "src\Hamiltonian.ConsoleTest\Hamiltonian.ConsoleTest.csproj", "{EC68C85E-952D-651A-E6F0-9BEA505CC6F8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +30,6 @@ Global
 		{417BC313-8F13-4F74-8E47-7A7C8E2BA232}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{417BC313-8F13-4F74-8E47-7A7C8E2BA232}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{417BC313-8F13-4F74-8E47-7A7C8E2BA232}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC68C85E-952D-651A-E6F0-9BEA505CC6F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC68C85E-952D-651A-E6F0-9BEA505CC6F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC68C85E-952D-651A-E6F0-9BEA505CC6F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC68C85E-952D-651A-E6F0-9BEA505CC6F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a linked node for a coordinate.
 /// </summary>
-internal sealed class CoordinateNode
+internal sealed class CoordinateNode(Coordinate coordinate, CoordinateNode? parent)
 {
 	/// <summary>
 	/// Initializes a <see cref="CoordinateNode"/> instance.
@@ -13,23 +13,16 @@ internal sealed class CoordinateNode
 	{
 	}
 
-	/// <summary>
-	/// Initializes a <see cref="CoordinateNode"/> instance.
-	/// </summary>
-	/// <param name="coordinate">The coordinate.</param>
-	/// <param name="parent">The parent node.</param>
-	public CoordinateNode(Coordinate coordinate, CoordinateNode? parent) => (Coordinate, Parent) = (coordinate, parent);
-
 
 	/// <summary>
 	/// Indicates the coordinate.
 	/// </summary>
-	public Coordinate Coordinate { get; }
+	public Coordinate Coordinate { get; } = coordinate;
 
 	/// <summary>
 	/// Indicates the parent node.
 	/// </summary>
-	public CoordinateNode? Parent { get; }
+	public CoordinateNode? Parent { get; } = parent;
 
 	/// <summary>
 	/// Indicates the root node.

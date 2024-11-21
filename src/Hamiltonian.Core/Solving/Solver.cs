@@ -21,33 +21,6 @@ public sealed class Solver
 				: throw new InvalidOperationException("The puzzle has no valid solution.");
 
 	/// <summary>
-	/// Determine whether the specified graph has a unique path.
-	/// </summary>
-	/// <param name="graph">Indicates the graph.</param>
-	/// <param name="result">Indicates the result of the path.</param>
-	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	public bool IsValid(Graph graph, [NotNullWhen(true)] out Path? result)
-	{
-		if (graph.IsEmpty)
-		{
-			// No cells chosen.
-			result = null;
-			return false;
-		}
-
-		foreach (var cell in graph.EnumerateCoordinates())
-		{
-			if (IsValid(graph, cell, null, out result))
-			{
-				return true;
-			}
-		}
-
-		result = null;
-		return false;
-	}
-
-	/// <summary>
 	/// Determine whether the specified graph has a unique path, from the specified cell as the start,
 	/// to the specified cell as the end.
 	/// </summary>
@@ -56,7 +29,7 @@ public sealed class Solver
 	/// <param name="end">The end cell. The end cell can be <see langword="null"/> if not specified.</param>
 	/// <param name="result">Indicates the result of the path.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	public bool IsValid(Graph graph, Coordinate start, Coordinate? end, [NotNullWhen(true)] out Path? result)
+	internal bool IsValid(Graph graph, Coordinate start, Coordinate? end, [NotNullWhen(true)] out Path? result)
 	{
 		if (graph.IsEmpty)
 		{

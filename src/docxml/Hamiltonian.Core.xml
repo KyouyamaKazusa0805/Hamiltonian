@@ -80,18 +80,16 @@
             Represents a linked node for a coordinate.
             </summary>
         </member>
+        <member name="M:Hamiltonian.Concepts.CoordinateNode.#ctor(Hamiltonian.Concepts.Coordinate,Hamiltonian.Concepts.CoordinateNode)">
+            <summary>
+            Represents a linked node for a coordinate.
+            </summary>
+        </member>
         <member name="M:Hamiltonian.Concepts.CoordinateNode.#ctor(Hamiltonian.Concepts.Coordinate)">
             <summary>
             Initializes a <see cref="T:Hamiltonian.Concepts.CoordinateNode"/> instance.
             </summary>
             <param name="coordinate">The coordinate.</param>
-        </member>
-        <member name="M:Hamiltonian.Concepts.CoordinateNode.#ctor(Hamiltonian.Concepts.Coordinate,Hamiltonian.Concepts.CoordinateNode)">
-            <summary>
-            Initializes a <see cref="T:Hamiltonian.Concepts.CoordinateNode"/> instance.
-            </summary>
-            <param name="coordinate">The coordinate.</param>
-            <param name="parent">The parent node.</param>
         </member>
         <member name="P:Hamiltonian.Concepts.CoordinateNode.Coordinate">
             <summary>
@@ -712,14 +710,6 @@
             <param name="start">The start coordinate.</param>
             <returns>The path describing the details of steps advanced.</returns>
             <exception cref="T:System.InvalidOperationException">Throws when the puzzle is invalid.</exception>
-        </member>
-        <member name="M:Hamiltonian.Solving.Solver.IsValid(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Path@)">
-            <summary>
-            Determine whether the specified graph has a unique path.
-            </summary>
-            <param name="graph">Indicates the graph.</param>
-            <param name="result">Indicates the result of the path.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
         <member name="M:Hamiltonian.Solving.Solver.IsValid(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Coordinate,System.Nullable{Hamiltonian.Concepts.Coordinate},Hamiltonian.Concepts.Path@)">
             <summary>

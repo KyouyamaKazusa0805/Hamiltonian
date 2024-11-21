@@ -216,6 +216,20 @@
             <param name="rows">Indicates the number of rows.</param>
             <param name="columns">Indicates the number of columns.</param>
         </member>
+        <member name="M:Hamiltonian.Concepts.Graph.#ctor(System.Boolean[],System.Int32,System.Int32)">
+            <summary>
+            Initializes a <see cref="T:Hamiltonian.Concepts.Graph"/> instance via an 1D array of <see cref="T:System.Boolean"/> values indicating the status of each cell.
+            </summary>
+            <param name="array">An 1D array of <see cref="T:System.Boolean"/> values.</param>
+            <param name="rows">Indicates the number of rows.</param>
+            <param name="columns">Indicates the number of columns.</param>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.#ctor(System.Boolean[0:,0:])">
+            <summary>
+            Initializes a <see cref="T:Hamiltonian.Concepts.Graph"/> instance via a 2D array of <see cref="T:System.Boolean"/> values indicating the status of each cell.
+            </summary>
+            <param name="array">A 2D array of <see cref="T:System.Boolean"/> values.</param>
+        </member>
         <member name="M:Hamiltonian.Concepts.Graph.#ctor(System.Collections.BitArray)">
             <summary>
             Copies a list of bits from the specified bit array.
@@ -300,6 +314,12 @@
         </member>
         <member name="M:Hamiltonian.Concepts.Graph.Equals(Hamiltonian.Concepts.Graph)">
             <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.ToBooleanArray">
+            <summary>
+            Converts the current graph into a <see cref="T:System.Boolean"/> 2D table indicating which cells are used.
+            </summary>
+            <returns>A 2D array of <see cref="T:System.Boolean"/> values.</returns>
         </member>
         <member name="M:Hamiltonian.Concepts.Graph.GetHashCode">
             <inheritdoc/>
@@ -424,6 +444,30 @@
             <param name="base">The base graph.</param>
             <param name="coordinate">The coordinate.</param>
             <returns>The new graph with the specified coordinate removed.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.op_Implicit(Hamiltonian.Concepts.Graph)~System.Boolean[]">
+            <summary>
+            Implicit cast from a <see cref="T:Hamiltonian.Concepts.Graph"/> instance into a <see cref="T:System.Boolean"/>[].
+            </summary>
+            <param name="graph">A graph.</param>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.op_Implicit(Hamiltonian.Concepts.Graph)~System.Boolean[0:,0:]">
+            <summary>
+            Implicit cast from a <see cref="T:Hamiltonian.Concepts.Graph"/> instance into a <see cref="T:System.Boolean"/>[,].
+            </summary>
+            <param name="graph">A graph.</param>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.op_Implicit(Hamiltonian.Concepts.Graph)~System.Collections.BitArray">
+            <summary>
+            Implicit cast from a <see cref="T:Hamiltonian.Concepts.Graph"/> instance into a <see cref="T:System.Collections.BitArray"/>.
+            </summary>
+            <param name="graph">A graph.</param>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.op_Explicit(System.Boolean[0:,0:])~Hamiltonian.Concepts.Graph">
+            <summary>
+            Explicit cast from a <see cref="T:System.Boolean"/>[,] instance into a <see cref="T:Hamiltonian.Concepts.Graph"/>.
+            </summary>
+            <param name="array">An array.</param>
         </member>
         <member name="T:Hamiltonian.Concepts.Graph.Enumerator">
             <summary>
@@ -721,6 +765,26 @@
             <param name="end">The end cell. The end cell can be <see langword="null"/> if not specified.</param>
             <param name="result">Indicates the result of the path.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="T:Hamiltonian.Transforming.GraphTransformation">
+            <summary>
+            Provides a way to transform a <see cref="T:Hamiltonian.Concepts.Graph"/>.
+            </summary>
+            <seealso cref="T:Hamiltonian.Concepts.Graph"/>
+        </member>
+        <member name="M:Hamiltonian.Transforming.GraphTransformation.RotateClockwise(Hamiltonian.Concepts.Graph)">
+            <summary>
+            Rotate a graph clockwise.
+            </summary>
+            <param name="graph">The graph.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Hamiltonian.Transforming.GraphTransformation.RotateCounterclockwise(Hamiltonian.Concepts.Graph)">
+            <summary>
+            Rotate a graph counter-clockwise.
+            </summary>
+            <param name="graph">The graph.</param>
+            <returns>The result.</returns>
         </member>
         <member name="T:System.Text.RegularExpressions.Generated.ParsingFormatPattern_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the ParsingFormatPattern method.</summary>

@@ -31,6 +31,26 @@ public sealed partial class Graph :
 	}
 
 	/// <summary>
+	/// Initializes a <see cref="Graph"/> instance via an 1D array of <see cref="bool"/> values indicating the status of each cell.
+	/// </summary>
+	/// <param name="array">An 1D array of <see cref="bool"/> values.</param>
+	/// <param name="rows">Indicates the number of rows.</param>
+	/// <param name="columns">Indicates the number of columns.</param>
+	public Graph(bool[] array, int rows, int columns)
+	{
+		(RowsLength, ColumnsLength) = (rows, columns);
+		_sequence = new(array);
+	}
+
+	/// <summary>
+	/// Initializes a <see cref="Graph"/> instance via a 2D array of <see cref="bool"/> values indicating the status of each cell.
+	/// </summary>
+	/// <param name="array">A 2D array of <see cref="bool"/> values.</param>
+	public Graph(bool[,] array) : this(array.Flat(), array.GetLength(0), array.GetLength(1))
+	{
+	}
+
+	/// <summary>
 	/// Copies a list of bits from the specified bit array.
 	/// </summary>
 	/// <param name="bitArray">The bit array.</param>
@@ -98,8 +118,24 @@ public sealed partial class Graph :
 	public override bool Equals([NotNullWhen(true)] object? obj) => Equals(obj as Graph);
 
 	/// <inheritdoc/>
-	public bool Equals([NotNullWhen(true)] Graph? other)
-		=> other is not null && _sequence.SequenceEqual(other._sequence);
+	public bool Equals([NotNullWhen(true)] Graph? other) => other is not null && _sequence.SequenceEqual(other._sequence);
+
+	/// <summary>
+	/// Converts the current graph into a <see cref="bool"/> 2D table indicating which cells are used.
+	/// </summary>
+	/// <returns>A 2D array of <see cref="bool"/> values.</returns>
+	public bool[,] ToBooleanArray()
+	{
+		var result = new bool[RowsLength, ColumnsLength];
+		for (var i = 0; i < RowsLength; i++)
+		{
+			for (var j = 0; j < ColumnsLength; j++)
+			{
+				result[i, j] = _sequence[i * ColumnsLength + j];
+			}
+		}
+		return result;
+	}
 
 	/// <inheritdoc/>
 	public override int GetHashCode()
@@ -378,4 +414,29 @@ public sealed partial class Graph :
 		result[coordinate] = false;
 		return result;
 	}
+
+
+	/// <summary>
+	/// Implicit cast from a <see cref="Graph"/> instance into a <see cref="bool"/>[].
+	/// </summary>
+	/// <param name="graph">A graph.</param>
+	public static implicit operator bool[](Graph graph) => graph.ToBooleanArray().Flat();
+
+	/// <summary>
+	/// Implicit cast from a <see cref="Graph"/> instance into a <see cref="bool"/>[,].
+	/// </summary>
+	/// <param name="graph">A graph.</param>
+	public static implicit operator bool[,](Graph graph) => graph.ToBooleanArray();
+
+	/// <summary>
+	/// Implicit cast from a <see cref="Graph"/> instance into a <see cref="BitArray"/>.
+	/// </summary>
+	/// <param name="graph">A graph.</param>
+	public static implicit operator BitArray(Graph graph) => graph.ToBitArray();
+
+	/// <summary>
+	/// Explicit cast from a <see cref="bool"/>[,] instance into a <see cref="Graph"/>.
+	/// </summary>
+	/// <param name="array">An array.</param>
+	public static explicit operator Graph(bool[,] array) => new(array);
 }

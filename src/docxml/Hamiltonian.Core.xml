@@ -230,11 +230,13 @@
             </summary>
             <param name="array">A 2D array of <see cref="T:System.Boolean"/> values.</param>
         </member>
-        <member name="M:Hamiltonian.Concepts.Graph.#ctor(System.Collections.BitArray)">
+        <member name="M:Hamiltonian.Concepts.Graph.#ctor(System.Collections.BitArray,System.Int32,System.Int32)">
             <summary>
             Copies a list of bits from the specified bit array.
             </summary>
             <param name="bitArray">The bit array.</param>
+            <param name="rows">Indicates the number of rows.</param>
+            <param name="columns">Indicates the number of columns.</param>
         </member>
         <member name="P:Hamiltonian.Concepts.Graph.IsEmpty">
             <summary>
@@ -785,6 +787,20 @@
             </summary>
             <param name="graph">The graph.</param>
             <returns>The result.</returns>
+        </member>
+        <member name="M:Hamiltonian.Transforming.GraphTransformation.MirrorLeftRight(Hamiltonian.Concepts.Graph)">
+            <summary>
+            Mirror left-right the graph.
+            </summary>
+            <param name="graph">The graph.</param>
+            <returns>The result graph mirrored.</returns>
+        </member>
+        <member name="M:Hamiltonian.Transforming.GraphTransformation.MirrorTopBottom(Hamiltonian.Concepts.Graph)">
+            <summary>
+            Mirror top-bottom the graph.
+            </summary>
+            <param name="graph">The graph.</param>
+            <returns>The result graph mirrored.</returns>
         </member>
         <member name="T:System.Text.RegularExpressions.Generated.ParsingFormatPattern_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the ParsingFormatPattern method.</summary>

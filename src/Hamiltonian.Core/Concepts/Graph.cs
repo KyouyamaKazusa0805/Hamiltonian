@@ -54,7 +54,13 @@ public sealed partial class Graph :
 	/// Copies a list of bits from the specified bit array.
 	/// </summary>
 	/// <param name="bitArray">The bit array.</param>
-	private Graph(BitArray bitArray) => _sequence = (BitArray)bitArray.Clone();
+	/// <param name="rows">Indicates the number of rows.</param>
+	/// <param name="columns">Indicates the number of columns.</param>
+	private Graph(BitArray bitArray, int rows, int columns)
+	{
+		(RowsLength, ColumnsLength) = (rows, columns);
+		_sequence = (BitArray)bitArray.Clone();
+	}
 
 
 	/// <summary>
@@ -269,7 +275,7 @@ public sealed partial class Graph :
 	public CoordinateEnumerator EnumerateCoordinates() => new(_sequence, ColumnsLength);
 
 	/// <inheritdoc cref="ICloneable.Clone"/>
-	public Graph Clone() => new(_sequence);
+	public Graph Clone() => new(_sequence, RowsLength, ColumnsLength);
 
 	/// <summary>
 	/// Returns a read-only bit array.

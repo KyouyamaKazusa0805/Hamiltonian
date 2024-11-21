@@ -55,4 +55,44 @@ public static class GraphTransformation
 		}
 		return new(result);
 	}
+
+	/// <summary>
+	/// Mirror left-right the graph.
+	/// </summary>
+	/// <param name="graph">The graph.</param>
+	/// <returns>The result graph mirrored.</returns>
+	public static Graph MirrorLeftRight(this Graph graph)
+	{
+		var result = graph.Clone();
+		var rows = graph.RowsLength;
+		var columns = graph.ColumnsLength;
+		for (var i = 0; i < rows; i++)
+		{
+			for (var j = 0; j < columns; j++)
+			{
+				result[i * columns + j] = graph[i * columns + (columns - 1 - j)];
+			}
+		}
+		return result;
+	}
+
+	/// <summary>
+	/// Mirror top-bottom the graph.
+	/// </summary>
+	/// <param name="graph">The graph.</param>
+	/// <returns>The result graph mirrored.</returns>
+	public static Graph MirrorTopBottom(this Graph graph)
+	{
+		var result = graph.Clone();
+		var rows = graph.RowsLength;
+		var columns = graph.ColumnsLength;
+		for (var i = 0; i < rows; i++)
+		{
+			for (var j = 0; j < columns; j++)
+			{
+				result[i * columns + j] = graph[(columns - 1 - i) * columns + j];
+			}
+		}
+		return result;
+	}
 }

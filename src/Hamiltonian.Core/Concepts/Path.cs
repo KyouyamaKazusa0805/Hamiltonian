@@ -1,4 +1,4 @@
-﻿namespace Hamiltonian;
+﻿namespace Hamiltonian.Concepts;
 
 /// <summary>
 /// Provides a path of a Hamiltonian graph.

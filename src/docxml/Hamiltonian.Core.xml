@@ -4,67 +4,67 @@
         <name>Hamiltonian.Core</name>
     </assembly>
     <members>
-        <member name="T:Hamiltonian.Coordinate">
+        <member name="T:Hamiltonian.Concepts.Coordinate">
             <summary>
             Represents a coordinate.
             </summary>
             <param name="X">Indicates the row label.</param>
             <param name="Y">Indicates the column label.</param>
         </member>
-        <member name="M:Hamiltonian.Coordinate.#ctor(System.Int32,System.Int32)">
+        <member name="M:Hamiltonian.Concepts.Coordinate.#ctor(System.Int32,System.Int32)">
             <summary>
             Represents a coordinate.
             </summary>
             <param name="X">Indicates the row label.</param>
             <param name="Y">Indicates the column label.</param>
         </member>
-        <member name="P:Hamiltonian.Coordinate.X">
+        <member name="P:Hamiltonian.Concepts.Coordinate.X">
             <summary>Indicates the row label.</summary>
         </member>
-        <member name="P:Hamiltonian.Coordinate.Y">
+        <member name="P:Hamiltonian.Concepts.Coordinate.Y">
             <summary>Indicates the column label.</summary>
         </member>
-        <member name="P:Hamiltonian.Coordinate.Up">
+        <member name="P:Hamiltonian.Concepts.Coordinate.Up">
             <summary>
             Indicates the left cell.
             </summary>
         </member>
-        <member name="P:Hamiltonian.Coordinate.Down">
+        <member name="P:Hamiltonian.Concepts.Coordinate.Down">
             <summary>
             Indicates the right cell.
             </summary>
         </member>
-        <member name="P:Hamiltonian.Coordinate.Left">
+        <member name="P:Hamiltonian.Concepts.Coordinate.Left">
             <summary>
             Indicates the up cell.
             </summary>
         </member>
-        <member name="P:Hamiltonian.Coordinate.Right">
+        <member name="P:Hamiltonian.Concepts.Coordinate.Right">
             <summary>
             Indicates the down cell.
             </summary>
         </member>
-        <member name="M:Hamiltonian.Coordinate.IsOutOfBound(Hamiltonian.Graph)">
+        <member name="M:Hamiltonian.Concepts.Coordinate.IsOutOfBound(Hamiltonian.Concepts.Graph)">
             <summary>
             Indicates whether the coordinate is out of bound.
             </summary>
             <param name="graph">The graph.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Hamiltonian.Coordinate.ToIndex(Hamiltonian.Graph)">
+        <member name="M:Hamiltonian.Concepts.Coordinate.ToIndex(Hamiltonian.Concepts.Graph)">
             <summary>
             Converts the current coordinate into an absolute index.
             </summary>
             <param name="graph">The graph.</param>
             <returns>The absolute index.</returns>
         </member>
-        <member name="M:Hamiltonian.Coordinate.op_Subtraction(Hamiltonian.Coordinate,Hamiltonian.Coordinate)">
+        <member name="M:Hamiltonian.Concepts.Coordinate.op_Subtraction(Hamiltonian.Concepts.Coordinate,Hamiltonian.Concepts.Coordinate)">
             <inheritdoc/>
             <exception cref="T:System.InvalidOperationException">
             Throws when the two coordinates has a gap between them, or they cannot see each other in their own direction.
             </exception>
         </member>
-        <member name="M:Hamiltonian.Coordinate.op_RightShift(Hamiltonian.Coordinate,Hamiltonian.Direction)">
+        <member name="M:Hamiltonian.Concepts.Coordinate.op_RightShift(Hamiltonian.Concepts.Coordinate,Hamiltonian.Concepts.Direction)">
             <summary>
             Moves the coordinate one step forward to the next coordinate by the specified direction.
             </summary>
@@ -75,85 +75,505 @@
             Throws when the argument <paramref name="direction"/> is out of range.
             </exception>
         </member>
-        <member name="T:Hamiltonian.CoordinateNode">
+        <member name="T:Hamiltonian.Concepts.CoordinateNode">
             <summary>
             Represents a linked node for a coordinate.
             </summary>
         </member>
-        <member name="M:Hamiltonian.CoordinateNode.#ctor(Hamiltonian.Coordinate)">
+        <member name="M:Hamiltonian.Concepts.CoordinateNode.#ctor(Hamiltonian.Concepts.Coordinate)">
             <summary>
-            Initializes a <see cref="T:Hamiltonian.CoordinateNode"/> instance.
+            Initializes a <see cref="T:Hamiltonian.Concepts.CoordinateNode"/> instance.
             </summary>
             <param name="coordinate">The coordinate.</param>
         </member>
-        <member name="M:Hamiltonian.CoordinateNode.#ctor(Hamiltonian.Coordinate,Hamiltonian.CoordinateNode)">
+        <member name="M:Hamiltonian.Concepts.CoordinateNode.#ctor(Hamiltonian.Concepts.Coordinate,Hamiltonian.Concepts.CoordinateNode)">
             <summary>
-            Initializes a <see cref="T:Hamiltonian.CoordinateNode"/> instance.
+            Initializes a <see cref="T:Hamiltonian.Concepts.CoordinateNode"/> instance.
             </summary>
             <param name="coordinate">The coordinate.</param>
             <param name="parent">The parent node.</param>
         </member>
-        <member name="P:Hamiltonian.CoordinateNode.Coordinate">
+        <member name="P:Hamiltonian.Concepts.CoordinateNode.Coordinate">
             <summary>
             Indicates the coordinate.
             </summary>
         </member>
-        <member name="P:Hamiltonian.CoordinateNode.Parent">
+        <member name="P:Hamiltonian.Concepts.CoordinateNode.Parent">
             <summary>
             Indicates the parent node.
             </summary>
         </member>
-        <member name="P:Hamiltonian.CoordinateNode.Root">
+        <member name="P:Hamiltonian.Concepts.CoordinateNode.Root">
             <summary>
             Indicates the root node.
             </summary>
         </member>
-        <member name="M:Hamiltonian.CoordinateNode.ToString">
+        <member name="M:Hamiltonian.Concepts.CoordinateNode.ToString">
             <inheritdoc/>
         </member>
-        <member name="T:Hamiltonian.Direction">
+        <member name="T:Hamiltonian.Concepts.Direction">
             <summary>
             Represents a direction.
             </summary>
         </member>
-        <member name="F:Hamiltonian.Direction.None">
+        <member name="F:Hamiltonian.Concepts.Direction.None">
             <summary>
             Indicates the direction is none.
             </summary>
         </member>
-        <member name="F:Hamiltonian.Direction.Up">
+        <member name="F:Hamiltonian.Concepts.Direction.Up">
             <summary>
             Indicates the direction is up.
             </summary>
         </member>
-        <member name="F:Hamiltonian.Direction.Down">
+        <member name="F:Hamiltonian.Concepts.Direction.Down">
             <summary>
             Indicates the direction is down.
             </summary>
         </member>
-        <member name="F:Hamiltonian.Direction.Left">
+        <member name="F:Hamiltonian.Concepts.Direction.Left">
             <summary>
             Indicates the direction is left.
             </summary>
         </member>
-        <member name="F:Hamiltonian.Direction.Right">
+        <member name="F:Hamiltonian.Concepts.Direction.Right">
             <summary>
             Indicates the direction is right.
             </summary>
         </member>
-        <member name="T:Hamiltonian.DirectionExtensions">
+        <member name="T:Hamiltonian.Concepts.DirectionExtensions">
             <summary>
-            Provides with extension methods on <see cref="T:Hamiltonian.Direction"/>.
+            Provides with extension methods on <see cref="T:Hamiltonian.Concepts.Direction"/>.
             </summary>
-            <seealso cref="T:Hamiltonian.Direction"/>
+            <seealso cref="T:Hamiltonian.Concepts.Direction"/>
         </member>
-        <member name="M:Hamiltonian.DirectionExtensions.GetArrow(Hamiltonian.Direction)">
+        <member name="M:Hamiltonian.Concepts.DirectionExtensions.GetArrow(Hamiltonian.Concepts.Direction)">
             <summary>
             Gets an arrow text that represents the specified direction.
             </summary>
             <param name="this">The direction.</param>
             <returns>The character.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is out of range.</exception>
+        </member>
+        <member name="T:Hamiltonian.Concepts.Graph">
+            <summary>
+            Represents a Hamiltonian graph.
+            </summary>
+        </member>
+        <member name="T:Hamiltonian.Concepts.Graph.CoordinateEnumerator">
+            <summary>
+            Represents an enumerator type that iterates on each coordinate of the cells used.
+            </summary>
+        </member>
+        <member name="F:Hamiltonian.Concepts.Graph.CoordinateEnumerator._columns">
+            <summary>
+            Indicates the number of columns.
+            </summary>
+        </member>
+        <member name="F:Hamiltonian.Concepts.Graph.CoordinateEnumerator._sequence">
+            <summary>
+            Indicates the sequence.
+            </summary>
+        </member>
+        <member name="F:Hamiltonian.Concepts.Graph.CoordinateEnumerator._index">
+            <summary>
+            Indicates the index.
+            </summary>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.CoordinateEnumerator.#ctor(System.Collections.BitArray,System.Int32)">
+            <summary>
+            Initializes a <see cref="T:Hamiltonian.Concepts.Graph.CoordinateEnumerator"/> instance.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <param name="columns">The number of columns.</param>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.CoordinateEnumerator.Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.CoordinateEnumerator.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.CoordinateEnumerator.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.CoordinateEnumerator.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.CoordinateEnumerator.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.CoordinateEnumerator.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
+        </member>
+        <member name="F:Hamiltonian.Concepts.Graph._sequence">
+            <summary>
+            Indicates the sequence of the graph.
+            </summary>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a <see cref="T:Hamiltonian.Concepts.Graph"/> instance via the specified number of rows and columns,
+            treating all cells as "off" state. 
+            </summary>
+            <param name="rows">Indicates the number of rows.</param>
+            <param name="columns">Indicates the number of columns.</param>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.#ctor(System.Collections.BitArray)">
+            <summary>
+            Copies a list of bits from the specified bit array.
+            </summary>
+            <param name="bitArray">The bit array.</param>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.IsEmpty">
+            <summary>
+            Indicates whether the graph is empty.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.Length">
+            <summary>
+            Indicates the number of cells used.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.Size">
+            <summary>
+            Indicates the size of the graph (the number of cells used).
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.RowsLength">
+            <summary>
+            Indicates the number of rows used.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.ColumnsLength">
+            <summary>
+            Indicates the number of columns used.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.System#Collections#Generic#IReadOnlyCollection{System#Boolean}#Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.ParsingFormatPattern">
+            <remarks>
+            Pattern:<br/>
+            <code>^(\\d+):(\\d+)(:([01]{4,}))?$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ 1st capture group.<br/>
+                ○ Match a Unicode digit atomically at least once.<br/>
+            ○ Match ':'.<br/>
+            ○ 2nd capture group.<br/>
+                ○ Match a Unicode digit greedily at least once.<br/>
+            ○ Optional (greedy).<br/>
+                ○ 3rd capture group.<br/>
+                    ○ Match ':'.<br/>
+                    ○ 4th capture group.<br/>
+                        ○ Match a character in the set [01] greedily at least 4 times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.OnStatePattern">
+            <remarks>
+            Pattern:<br/>
+            <code>1</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match '1'.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.Item(System.Int32)">
+            <summary>
+            Gets or sets the state at the specified index.
+            </summary>
+            <param name="index">The desired index.</param>
+            <returns>The boolean state to get or set.</returns>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.Item(Hamiltonian.Concepts.Coordinate)">
+            <inheritdoc cref="P:Hamiltonian.Concepts.Graph.Item(System.Int32)"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Equals(Hamiltonian.Concepts.Graph)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.GetDegreeAt(Hamiltonian.Concepts.Coordinate)">
+            <summary>
+            Gets the degree value at the specified coordinate.
+            </summary>
+            <param name="coordinate">The coordinate.</param>
+            <returns>The degree value. The return value must be 2, 3 or 4.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.ToString(System.String)">
+            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.SliceRow(System.Int32)">
+            <summary>
+            Slices a row, and integrates the values into a sequence of <see cref="T:System.Boolean"/> values.
+            </summary>
+            <param name="row">The desired row label.</param>
+            <returns>A list of <see cref="T:System.Boolean"/> result sliced.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.SliceColumn(System.Int32)">
+            <summary>
+            Slices a column, and integrates the values into a sequence of <see cref="T:System.Boolean"/> values.
+            </summary>
+            <param name="column">The desired column label.</param>
+            <returns>A list of <see cref="T:System.Boolean"/> result sliced.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates on each bits of the sequence.
+            </summary>
+            <returns>An enumerator that iterates on each bits of the sequence.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.EnumerateCoordinates">
+            <summary>
+            Returns an enumerator that iterates on each coordinates of cells used.
+            </summary>
+            <returns>An enumerator that iterates on each coordinates of cells used.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Clone">
+            <inheritdoc cref="M:System.ICloneable.Clone"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.ToBitArray">
+            <summary>
+            Returns a read-only bit array.
+            </summary>
+            <returns>The bit array.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.System#ICloneable#Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.System#IFormattable#ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.System#Collections#Generic#IEnumerable{System#Boolean}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Empty(System.Int32,System.Int32)">
+            <summary>
+            Generates an empty graph with the specified number of rows and columns.
+            </summary>
+            <param name="rows">The rows.</param>
+            <param name="columns">The columns.</param>
+            <returns>A graph.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Parse(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:Hamiltonian.Concepts.Graph.Parse(System.String)"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Parse(System.String)">
+            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+            <remarks>
+            <para>
+            Match format:
+            <code><![CDATA[<row>:<column>:<data>]]></code>
+            </para>
+            <para>
+            Meaning:
+            <list type="bullet">
+            <item><c>row</c>: The number of rows is <c>row</c>.</item>
+            <item><c>column</c>: The number of columns is <c>column</c>.</item>
+            <item><c>data</c>: Detail of on/off graph sequence (Use characters <c>'0'</c> and <c>'1'</c>; 0 - used, 1 - unused).</item>
+            <item><c>colon token ':'</c>: Separator.</item>
+            </list>
+            </para>
+            <para><c>data</c> can be omitted. If <c>data</c> is omitted, the generated graph will set all cells "off".</para>
+            </remarks>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.TryParse(System.String,Hamiltonian.Concepts.Graph@)">
+            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.System#IParsable{Hamiltonian#Concepts#Graph}#TryParse(System.String,System.IFormatProvider,Hamiltonian.Concepts.Graph@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.System#IParsable{Hamiltonian#Concepts#Graph}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.op_Equality(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Graph)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.op_Inequality(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Graph)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.op_Addition(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Coordinate)">
+            <summary>
+            Adds a new coordinate into the graph.
+            </summary>
+            <param name="base">The base graph.</param>
+            <param name="coordinate">The coordinate.</param>
+            <returns>The new graph with the specified coordinate added.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.op_Subtraction(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Coordinate)">
+            <summary>
+            Removes a coordinate from the graph.
+            </summary>
+            <param name="base">The base graph.</param>
+            <param name="coordinate">The coordinate.</param>
+            <returns>The new graph with the specified coordinate removed.</returns>
+        </member>
+        <member name="T:Hamiltonian.Concepts.Graph.Enumerator">
+            <summary>
+            Represents an enumerator type that iterates on each bit of the sequence.
+            </summary>
+        </member>
+        <member name="F:Hamiltonian.Concepts.Graph.Enumerator._sequence">
+            <summary>
+            Indicates the sequence.
+            </summary>
+        </member>
+        <member name="F:Hamiltonian.Concepts.Graph.Enumerator._index">
+            <summary>
+            Indicates the index.
+            </summary>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Enumerator.#ctor(System.Collections.BitArray)">
+            <summary>
+            Initializes an <see cref="T:Hamiltonian.Concepts.Graph.Enumerator"/> instance.
+            </summary>
+            <param name="sequence">The sequence.</param>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.Enumerator.Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Graph.Enumerator.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Enumerator.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Enumerator.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.Enumerator.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hamiltonian.Concepts.Path">
+            <summary>
+            Provides a path of a Hamiltonian graph.
+            </summary>
+        </member>
+        <member name="F:Hamiltonian.Concepts.Path._coordinates">
+            <summary>
+            Indicates the coordinates.
+            </summary>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.#ctor(Hamiltonian.Concepts.Coordinate[])">
+            <summary>
+            Initializes a <see cref="T:Hamiltonian.Concepts.Path"/> instance via the specified path.
+            </summary>
+            <param name="coordinates">The coordinates.</param>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.#ctor(Hamiltonian.Concepts.CoordinateNode)">
+            <summary>
+            Initializes a <see cref="T:Hamiltonian.Concepts.Path"/> instance via the specified node as the last node.
+            </summary>
+            <param name="lastNode">The last node.</param>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Path.Length">
+            <summary>
+            Indicates the length of the coordinates used.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Path.Directions">
+            <summary>
+            Indicates the directions of the path.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Path.Span">
+            <summary>
+            Returns the backing elements, integrated as a <see cref="T:System.ReadOnlySpan`1"/>.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Path.System#Collections#Generic#IReadOnlyCollection{Hamiltonian#Concepts#Coordinate}#Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Path.Item(System.Int32)">
+            <summary>
+            Gets the coordinate at the specified index.
+            </summary>
+            <param name="index">The desired index.</param>
+            <returns>The coordinate.</returns>
+            <exception cref="T:System.IndexOutOfRangeException">Throws when the index is out of range.</exception>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.Equals(Hamiltonian.Concepts.Path)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.ToString(System.String)">
+            <summary>
+            Converts the current instance into a <see cref="T:System.String"/> result.
+            </summary>
+            <param name="separator">The separator.</param>
+            <returns>The string result.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.AsGraph(System.Int32,System.Int32)">
+            <summary>
+            Converts the current path object into a <see cref="T:Hamiltonian.Concepts.Graph"/> instance.
+            </summary>
+            <param name="rows">The number of rows.</param>
+            <param name="columns">The number of columns.</param>
+            <returns>A <see cref="T:Hamiltonian.Concepts.Graph"/> result casted.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.System#Collections#Generic#IEnumerable{Hamiltonian#Concepts#Coordinate}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.TryParse(System.String,Hamiltonian.Concepts.Path@)">
+            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.Parse(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:Hamiltonian.Concepts.Path.Parse(System.String)"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.Parse(System.String)">
+            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.Create(System.ReadOnlySpan{Hamiltonian.Concepts.Coordinate})">
+            <summary>
+            Creates a <see cref="T:Hamiltonian.Concepts.Path"/> instance via the specified coordinates.
+            </summary>
+            <param name="coordinates">A list of coordinates.</param>
+            <returns>A <see cref="T:Hamiltonian.Concepts.Path"/> instance.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.System#IParsable{Hamiltonian#Concepts#Path}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.System#IParsable{Hamiltonian#Concepts#Path}#TryParse(System.String,System.IFormatProvider,Hamiltonian.Concepts.Path@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.op_Equality(Hamiltonian.Concepts.Path,Hamiltonian.Concepts.Path)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Path.op_Inequality(Hamiltonian.Concepts.Path,Hamiltonian.Concepts.Path)">
+            <inheritdoc/>
         </member>
         <member name="T:Hamiltonian.Generating.GenerationResult">
             <summary>
@@ -165,7 +585,7 @@
             <param name="End">Indicates the end position.</param>
             <param name="Path">Indicates the path.</param>
         </member>
-        <member name="M:Hamiltonian.Generating.GenerationResult.#ctor(System.Boolean,Hamiltonian.Graph,Hamiltonian.Coordinate,Hamiltonian.Coordinate,Hamiltonian.Path)">
+        <member name="M:Hamiltonian.Generating.GenerationResult.#ctor(System.Boolean,Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Coordinate,Hamiltonian.Concepts.Coordinate,Hamiltonian.Concepts.Path)">
             <summary>
             Represents a generation result.
             </summary>
@@ -192,19 +612,19 @@
         </member>
         <member name="T:Hamiltonian.Generating.Generator">
             <summary>
-            Represents a generator that can generate a <see cref="T:Hamiltonian.Graph"/> instance with a unique path.
+            Represents a generator that can generate a <see cref="T:Hamiltonian.Concepts.Graph"/> instance with a unique path.
             </summary>
             <param name="rows">The number of rows.</param>
             <param name="columns">The number of columns.</param>
-            <seealso cref="T:Hamiltonian.Graph"/>
+            <seealso cref="T:Hamiltonian.Concepts.Graph"/>
         </member>
         <member name="M:Hamiltonian.Generating.Generator.#ctor(System.Int32,System.Int32)">
             <summary>
-            Represents a generator that can generate a <see cref="T:Hamiltonian.Graph"/> instance with a unique path.
+            Represents a generator that can generate a <see cref="T:Hamiltonian.Concepts.Graph"/> instance with a unique path.
             </summary>
             <param name="rows">The number of rows.</param>
             <param name="columns">The number of columns.</param>
-            <seealso cref="T:Hamiltonian.Graph"/>
+            <seealso cref="T:Hamiltonian.Concepts.Graph"/>
         </member>
         <member name="F:Hamiltonian.Generating.Generator._random">
             <summary>
@@ -235,7 +655,7 @@
         <member name="M:Hamiltonian.Generating.Generator.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Hamiltonian.Generating.Generator.Generate(Hamiltonian.Coordinate,System.Double,System.Double,System.Threading.CancellationToken)">
+        <member name="M:Hamiltonian.Generating.Generator.Generate(Hamiltonian.Concepts.Coordinate,System.Double,System.Double,System.Threading.CancellationToken)">
             <summary>
             Generate a graph puzzle with a unique path, by using the specified cell as the start.
             </summary>
@@ -248,327 +668,19 @@
             Throws when the <paramref name="minFillingRate"/> or <paramref name="maxFillingRate"/> is invalid.
             </exception>
         </member>
-        <member name="T:Hamiltonian.Graph">
-            <summary>
-            Represents a Hamiltonian graph.
-            </summary>
-        </member>
-        <member name="T:Hamiltonian.Graph.CoordinateEnumerator">
-            <summary>
-            Represents an enumerator type that iterates on each coordinate of the cells used.
-            </summary>
-        </member>
-        <member name="F:Hamiltonian.Graph.CoordinateEnumerator._columns">
-            <summary>
-            Indicates the number of columns.
-            </summary>
-        </member>
-        <member name="F:Hamiltonian.Graph.CoordinateEnumerator._sequence">
-            <summary>
-            Indicates the sequence.
-            </summary>
-        </member>
-        <member name="F:Hamiltonian.Graph.CoordinateEnumerator._index">
-            <summary>
-            Indicates the index.
-            </summary>
-        </member>
-        <member name="M:Hamiltonian.Graph.CoordinateEnumerator.#ctor(System.Collections.BitArray,System.Int32)">
-            <summary>
-            Initializes a <see cref="T:Hamiltonian.Graph.CoordinateEnumerator"/> instance.
-            </summary>
-            <param name="sequence">The sequence.</param>
-            <param name="columns">The number of columns.</param>
-        </member>
-        <member name="P:Hamiltonian.Graph.CoordinateEnumerator.Current">
-            <inheritdoc/>
-        </member>
-        <member name="P:Hamiltonian.Graph.CoordinateEnumerator.System#Collections#IEnumerator#Current">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.CoordinateEnumerator.GetEnumerator">
-            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="M:Hamiltonian.Graph.CoordinateEnumerator.MoveNext">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.CoordinateEnumerator.System#IDisposable#Dispose">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.CoordinateEnumerator.System#Collections#IEnumerator#Reset">
-            <inheritdoc/>
-        </member>
-        <member name="F:Hamiltonian.Graph._sequence">
-            <summary>
-            Indicates the sequence of the graph.
-            </summary>
-        </member>
-        <member name="M:Hamiltonian.Graph.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Initializes a <see cref="T:Hamiltonian.Graph"/> instance via the specified number of rows and columns,
-            treating all cells as "off" state. 
-            </summary>
-            <param name="rows">Indicates the number of rows.</param>
-            <param name="columns">Indicates the number of columns.</param>
-        </member>
-        <member name="M:Hamiltonian.Graph.#ctor(System.Collections.BitArray)">
-            <summary>
-            Copies a list of bits from the specified bit array.
-            </summary>
-            <param name="bitArray">The bit array.</param>
-        </member>
-        <member name="P:Hamiltonian.Graph.IsEmpty">
-            <summary>
-            Indicates whether the graph is empty.
-            </summary>
-        </member>
-        <member name="P:Hamiltonian.Graph.Length">
-            <summary>
-            Indicates the number of cells used.
-            </summary>
-        </member>
-        <member name="P:Hamiltonian.Graph.Size">
-            <summary>
-            Indicates the size of the graph (the number of cells used).
-            </summary>
-        </member>
-        <member name="P:Hamiltonian.Graph.RowsLength">
-            <summary>
-            Indicates the number of rows used.
-            </summary>
-        </member>
-        <member name="P:Hamiltonian.Graph.ColumnsLength">
-            <summary>
-            Indicates the number of columns used.
-            </summary>
-        </member>
-        <member name="P:Hamiltonian.Graph.System#Collections#Generic#IReadOnlyCollection{System#Boolean}#Count">
-            <inheritdoc/>
-        </member>
-        <member name="P:Hamiltonian.Graph.ParsingFormatPattern">
-            <remarks>
-            Pattern:<br/>
-            <code>^(\\d+):(\\d+)(:([01]{4,}))?$</code><br/>
-            Options:<br/>
-            <code>RegexOptions.Compiled</code><br/>
-            Explanation:<br/>
-            <code>
-            ○ Match if at the beginning of the string.<br/>
-            ○ 1st capture group.<br/>
-                ○ Match a Unicode digit atomically at least once.<br/>
-            ○ Match ':'.<br/>
-            ○ 2nd capture group.<br/>
-                ○ Match a Unicode digit greedily at least once.<br/>
-            ○ Optional (greedy).<br/>
-                ○ 3rd capture group.<br/>
-                    ○ Match ':'.<br/>
-                    ○ 4th capture group.<br/>
-                        ○ Match a character in the set [01] greedily at least 4 times.<br/>
-            ○ Match if at the end of the string or if before an ending newline.<br/>
-            </code>
-            </remarks>
-        </member>
-        <member name="P:Hamiltonian.Graph.OnStatePattern">
-            <remarks>
-            Pattern:<br/>
-            <code>1</code><br/>
-            Options:<br/>
-            <code>RegexOptions.Compiled</code><br/>
-            Explanation:<br/>
-            <code>
-            ○ Match '1'.<br/>
-            </code>
-            </remarks>
-        </member>
-        <member name="P:Hamiltonian.Graph.Item(System.Int32)">
-            <summary>
-            Gets or sets the state at the specified index.
-            </summary>
-            <param name="index">The desired index.</param>
-            <returns>The boolean state to get or set.</returns>
-        </member>
-        <member name="P:Hamiltonian.Graph.Item(Hamiltonian.Coordinate)">
-            <inheritdoc cref="P:Hamiltonian.Graph.Item(System.Int32)"/>
-        </member>
-        <member name="M:Hamiltonian.Graph.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.Equals(Hamiltonian.Graph)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.GetDegreeAt(Hamiltonian.Coordinate)">
-            <summary>
-            Gets the degree value at the specified coordinate.
-            </summary>
-            <param name="coordinate">The coordinate.</param>
-            <returns>The degree value. The return value must be 2, 3 or 4.</returns>
-        </member>
-        <member name="M:Hamiltonian.Graph.ToString">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.ToString(System.String)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
-        </member>
-        <member name="M:Hamiltonian.Graph.SliceRow(System.Int32)">
-            <summary>
-            Slices a row, and integrates the values into a sequence of <see cref="T:System.Boolean"/> values.
-            </summary>
-            <param name="row">The desired row label.</param>
-            <returns>A list of <see cref="T:System.Boolean"/> result sliced.</returns>
-        </member>
-        <member name="M:Hamiltonian.Graph.SliceColumn(System.Int32)">
-            <summary>
-            Slices a column, and integrates the values into a sequence of <see cref="T:System.Boolean"/> values.
-            </summary>
-            <param name="column">The desired column label.</param>
-            <returns>A list of <see cref="T:System.Boolean"/> result sliced.</returns>
-        </member>
-        <member name="M:Hamiltonian.Graph.GetEnumerator">
-            <summary>
-            Returns an enumerator that iterates on each bits of the sequence.
-            </summary>
-            <returns>An enumerator that iterates on each bits of the sequence.</returns>
-        </member>
-        <member name="M:Hamiltonian.Graph.EnumerateCoordinates">
-            <summary>
-            Returns an enumerator that iterates on each coordinates of cells used.
-            </summary>
-            <returns>An enumerator that iterates on each coordinates of cells used.</returns>
-        </member>
-        <member name="M:Hamiltonian.Graph.Clone">
-            <inheritdoc cref="M:System.ICloneable.Clone"/>
-        </member>
-        <member name="M:Hamiltonian.Graph.ToBitArray">
-            <summary>
-            Returns a read-only bit array.
-            </summary>
-            <returns>The bit array.</returns>
-        </member>
-        <member name="M:Hamiltonian.Graph.System#ICloneable#Clone">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.System#Collections#Generic#IEnumerable{System#Boolean}#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.Empty(System.Int32,System.Int32)">
-            <summary>
-            Generates an empty graph with the specified number of rows and columns.
-            </summary>
-            <param name="rows">The rows.</param>
-            <param name="columns">The columns.</param>
-            <returns>A graph.</returns>
-        </member>
-        <member name="M:Hamiltonian.Graph.Parse(System.ReadOnlySpan{System.Char})">
-            <inheritdoc cref="M:Hamiltonian.Graph.Parse(System.String)"/>
-        </member>
-        <member name="M:Hamiltonian.Graph.Parse(System.String)">
-            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
-            <remarks>
-            <para>
-            Match format:
-            <code><![CDATA[<row>:<column>:<data>]]></code>
-            </para>
-            <para>
-            Meaning:
-            <list type="bullet">
-            <item><c>row</c>: The number of rows is <c>row</c>.</item>
-            <item><c>column</c>: The number of columns is <c>column</c>.</item>
-            <item><c>data</c>: Detail of on/off graph sequence (Use characters <c>'0'</c> and <c>'1'</c>; 0 - used, 1 - unused).</item>
-            <item><c>colon token ':'</c>: Separator.</item>
-            </list>
-            </para>
-            <para><c>data</c> can be omitted. If <c>data</c> is omitted, the generated graph will set all cells "off".</para>
-            </remarks>
-        </member>
-        <member name="M:Hamiltonian.Graph.TryParse(System.String,Hamiltonian.Graph@)">
-            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
-        </member>
-        <member name="M:Hamiltonian.Graph.System#IParsable{Hamiltonian#Graph}#TryParse(System.String,System.IFormatProvider,Hamiltonian.Graph@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.System#IParsable{Hamiltonian#Graph}#Parse(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.op_Equality(Hamiltonian.Graph,Hamiltonian.Graph)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.op_Inequality(Hamiltonian.Graph,Hamiltonian.Graph)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.op_Addition(Hamiltonian.Graph,Hamiltonian.Coordinate)">
-            <summary>
-            Adds a new coordinate into the graph.
-            </summary>
-            <param name="base">The base graph.</param>
-            <param name="coordinate">The coordinate.</param>
-            <returns>The new graph with the specified coordinate added.</returns>
-        </member>
-        <member name="M:Hamiltonian.Graph.op_Subtraction(Hamiltonian.Graph,Hamiltonian.Coordinate)">
-            <summary>
-            Removes a coordinate from the graph.
-            </summary>
-            <param name="base">The base graph.</param>
-            <param name="coordinate">The coordinate.</param>
-            <returns>The new graph with the specified coordinate removed.</returns>
-        </member>
-        <member name="T:Hamiltonian.Graph.Enumerator">
-            <summary>
-            Represents an enumerator type that iterates on each bit of the sequence.
-            </summary>
-        </member>
-        <member name="F:Hamiltonian.Graph.Enumerator._sequence">
-            <summary>
-            Indicates the sequence.
-            </summary>
-        </member>
-        <member name="F:Hamiltonian.Graph.Enumerator._index">
-            <summary>
-            Indicates the index.
-            </summary>
-        </member>
-        <member name="M:Hamiltonian.Graph.Enumerator.#ctor(System.Collections.BitArray)">
-            <summary>
-            Initializes an <see cref="T:Hamiltonian.Graph.Enumerator"/> instance.
-            </summary>
-            <param name="sequence">The sequence.</param>
-        </member>
-        <member name="P:Hamiltonian.Graph.Enumerator.Current">
-            <inheritdoc/>
-        </member>
-        <member name="P:Hamiltonian.Graph.Enumerator.System#Collections#IEnumerator#Current">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.Enumerator.MoveNext">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.Enumerator.System#IDisposable#Dispose">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Graph.Enumerator.System#Collections#IEnumerator#Reset">
-            <inheritdoc/>
-        </member>
         <member name="T:Hamiltonian.Measuring.Degree">
             <summary>
             Represents a degree measurer.
             </summary>
         </member>
-        <member name="M:Hamiltonian.Measuring.Degree.GetDegreeSum(Hamiltonian.Graph)">
+        <member name="M:Hamiltonian.Measuring.Degree.GetDegreeSum(Hamiltonian.Concepts.Graph)">
             <summary>
             Gets the sum of the degree value.
             </summary>
             <param name="graph">The graph.</param>
             <returns>The sum degree value.</returns>
         </member>
-        <member name="M:Hamiltonian.Measuring.Degree.GetDegreeFrequency(Hamiltonian.Graph)">
+        <member name="M:Hamiltonian.Measuring.Degree.GetDegreeFrequency(Hamiltonian.Concepts.Graph)">
             <summary>
             Gets a dictionary that describes the times of appearing of nodes of the specified degree.
             </summary>
@@ -580,131 +692,19 @@
             Represents a rater for path entropy (i.e. the number of switching on rows and columns).
             </summary>
         </member>
-        <member name="M:Hamiltonian.Measuring.PathEntropy.GetEntropyValue(Hamiltonian.Path)">
+        <member name="M:Hamiltonian.Measuring.PathEntropy.GetEntropyValue(Hamiltonian.Concepts.Path)">
             <summary>
             Gets the entropy value of the path.
             </summary>
             <param name="this">The path.</param>
             <returns>The value.</returns>
         </member>
-        <member name="T:Hamiltonian.Path">
-            <summary>
-            Provides a path of a Hamiltonian graph.
-            </summary>
-        </member>
-        <member name="F:Hamiltonian.Path._coordinates">
-            <summary>
-            Indicates the coordinates.
-            </summary>
-        </member>
-        <member name="M:Hamiltonian.Path.#ctor(Hamiltonian.Coordinate[])">
-            <summary>
-            Initializes a <see cref="T:Hamiltonian.Path"/> instance via the specified path.
-            </summary>
-            <param name="coordinates">The coordinates.</param>
-        </member>
-        <member name="M:Hamiltonian.Path.#ctor(Hamiltonian.CoordinateNode)">
-            <summary>
-            Initializes a <see cref="T:Hamiltonian.Path"/> instance via the specified node as the last node.
-            </summary>
-            <param name="lastNode">The last node.</param>
-        </member>
-        <member name="P:Hamiltonian.Path.Length">
-            <summary>
-            Indicates the length of the coordinates used.
-            </summary>
-        </member>
-        <member name="P:Hamiltonian.Path.Directions">
-            <summary>
-            Indicates the directions of the path.
-            </summary>
-        </member>
-        <member name="P:Hamiltonian.Path.Span">
-            <summary>
-            Returns the backing elements, integrated as a <see cref="T:System.ReadOnlySpan`1"/>.
-            </summary>
-        </member>
-        <member name="P:Hamiltonian.Path.System#Collections#Generic#IReadOnlyCollection{Hamiltonian#Coordinate}#Count">
-            <inheritdoc/>
-        </member>
-        <member name="P:Hamiltonian.Path.Item(System.Int32)">
-            <summary>
-            Gets the coordinate at the specified index.
-            </summary>
-            <param name="index">The desired index.</param>
-            <returns>The coordinate.</returns>
-            <exception cref="T:System.IndexOutOfRangeException">Throws when the index is out of range.</exception>
-        </member>
-        <member name="M:Hamiltonian.Path.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Path.Equals(Hamiltonian.Path)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Path.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Path.ToString">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Path.ToString(System.String)">
-            <summary>
-            Converts the current instance into a <see cref="T:System.String"/> result.
-            </summary>
-            <param name="separator">The separator.</param>
-            <returns>The string result.</returns>
-        </member>
-        <member name="M:Hamiltonian.Path.GetEnumerator">
-            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="M:Hamiltonian.Path.AsGraph(System.Int32,System.Int32)">
-            <summary>
-            Converts the current path object into a <see cref="T:Hamiltonian.Graph"/> instance.
-            </summary>
-            <param name="rows">The number of rows.</param>
-            <param name="columns">The number of columns.</param>
-            <returns>A <see cref="T:Hamiltonian.Graph"/> result casted.</returns>
-        </member>
-        <member name="M:Hamiltonian.Path.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Path.System#Collections#Generic#IEnumerable{Hamiltonian#Coordinate}#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Path.TryParse(System.String,Hamiltonian.Path@)">
-            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
-        </member>
-        <member name="M:Hamiltonian.Path.Parse(System.ReadOnlySpan{System.Char})">
-            <inheritdoc cref="M:Hamiltonian.Path.Parse(System.String)"/>
-        </member>
-        <member name="M:Hamiltonian.Path.Parse(System.String)">
-            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
-        </member>
-        <member name="M:Hamiltonian.Path.Create(System.ReadOnlySpan{Hamiltonian.Coordinate})">
-            <summary>
-            Creates a <see cref="T:Hamiltonian.Path"/> instance via the specified coordinates.
-            </summary>
-            <param name="coordinates">A list of coordinates.</param>
-            <returns>A <see cref="T:Hamiltonian.Path"/> instance.</returns>
-        </member>
-        <member name="M:Hamiltonian.Path.System#IParsable{Hamiltonian#Path}#Parse(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Path.System#IParsable{Hamiltonian#Path}#TryParse(System.String,System.IFormatProvider,Hamiltonian.Path@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Path.op_Equality(Hamiltonian.Path,Hamiltonian.Path)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Path.op_Inequality(Hamiltonian.Path,Hamiltonian.Path)">
-            <inheritdoc/>
-        </member>
         <member name="T:Hamiltonian.Solving.Solver">
             <summary>
             Provides a way to verify validity of a Hamiltonian graph.
             </summary>
         </member>
-        <member name="M:Hamiltonian.Solving.Solver.Solve(Hamiltonian.Graph,Hamiltonian.Coordinate)">
+        <member name="M:Hamiltonian.Solving.Solver.Solve(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Coordinate)">
             <summary>
             Solve the current graph and return a path.
             </summary>
@@ -713,7 +713,7 @@
             <returns>The path describing the details of steps advanced.</returns>
             <exception cref="T:System.InvalidOperationException">Throws when the puzzle is invalid.</exception>
         </member>
-        <member name="M:Hamiltonian.Solving.Solver.IsValid(Hamiltonian.Graph,Hamiltonian.Path@)">
+        <member name="M:Hamiltonian.Solving.Solver.IsValid(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Path@)">
             <summary>
             Determine whether the specified graph has a unique path.
             </summary>
@@ -721,7 +721,7 @@
             <param name="result">Indicates the result of the path.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Hamiltonian.Solving.Solver.IsValid(Hamiltonian.Graph,Hamiltonian.Coordinate,System.Nullable{Hamiltonian.Coordinate},Hamiltonian.Path@)">
+        <member name="M:Hamiltonian.Solving.Solver.IsValid(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Coordinate,System.Nullable{Hamiltonian.Concepts.Coordinate},Hamiltonian.Concepts.Path@)">
             <summary>
             Determine whether the specified graph has a unique path, from the specified cell as the start,
             to the specified cell as the end.

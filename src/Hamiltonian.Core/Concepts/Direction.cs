@@ -1,4 +1,4 @@
-﻿namespace Hamiltonian;
+﻿namespace Hamiltonian.Concepts;
 
 /// <summary>
 /// Represents a direction.

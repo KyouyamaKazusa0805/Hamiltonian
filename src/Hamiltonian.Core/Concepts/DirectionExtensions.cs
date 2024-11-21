@@ -1,4 +1,4 @@
-﻿namespace Hamiltonian;
+﻿namespace Hamiltonian.Concepts;
 
 /// <summary>
 /// Provides with extension methods on <see cref="Direction"/>.

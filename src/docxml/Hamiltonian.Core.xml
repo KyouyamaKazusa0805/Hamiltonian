@@ -153,6 +153,103 @@
             <returns>The character.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is out of range.</exception>
         </member>
+        <member name="T:Hamiltonian.Concepts.Formatting.OnOffGraphFormatInfo">
+            <summary>
+            Represents a format information object that uses "on" and "off" state to format a graph.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Formatting.OnOffGraphFormatInfo.WithSize">
+            <summary>
+            Indicates whether the formatter will emit size part. By default the value is <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Formatting.OnOffGraphFormatInfo.ParsingFormatPattern">
+            <remarks>
+            Pattern:<br/>
+            <code>^(\\d+):(\\d+)(:([01]{4,}))?$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ 1st capture group.<br/>
+                ○ Match a Unicode digit atomically at least once.<br/>
+            ○ Match ':'.<br/>
+            ○ 2nd capture group.<br/>
+                ○ Match a Unicode digit greedily at least once.<br/>
+            ○ Optional (greedy).<br/>
+                ○ 3rd capture group.<br/>
+                    ○ Match ':'.<br/>
+                    ○ 4th capture group.<br/>
+                        ○ Match a character in the set [01] greedily at least 4 times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Formatting.OnOffGraphFormatInfo.OnStatePattern">
+            <remarks>
+            Pattern:<br/>
+            <code>1</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match '1'.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.OnOffGraphFormatInfo.GetFormat(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.OnOffGraphFormatInfo.FormatCore(Hamiltonian.Concepts.Graph)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.OnOffGraphFormatInfo.ParseCore(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hamiltonian.Concepts.Formatting.GraphFormatInfo">
+            <summary>
+            Represents a graph format information object.
+            </summary>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.GraphFormatInfo.GetFormat(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.GraphFormatInfo.FormatCore(Hamiltonian.Concepts.Graph)">
+            <summary>
+            Formats a <see cref="T:Hamiltonian.Concepts.Graph"/> into a <see cref="T:System.String"/> value.
+            </summary>
+            <param name="graph">The graph instance.</param>
+            <returns>The formatted string value.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.GraphFormatInfo.ParseCore(System.String)">
+            <summary>
+            Parses a <see cref="T:System.String"/> value, converting it into a <see cref="T:Hamiltonian.Concepts.Graph"/>.
+            </summary>
+            <param name="str">The string value to be parsed.</param>
+            <returns>The converted <see cref="T:Hamiltonian.Concepts.Graph"/> instance.</returns>
+            <exception cref="T:System.FormatException">Throws when the parsing operation has encountered an unexpected error.</exception>
+            <exception cref="T:System.NotSupportedException">Throws when the parsing operation is not supported.</exception>
+        </member>
+        <member name="T:Hamiltonian.Concepts.Formatting.TableGraphFormatInfo">
+            <summary>
+            Represents a format object that can format a <see cref="T:Hamiltonian.Concepts.Graph"/> instance via table displaying.
+            </summary>
+        </member>
+        <member name="P:Hamiltonian.Concepts.Formatting.TableGraphFormatInfo.DisplayChars">
+            <summary>
+            Indicates the display chars. By default its <c>('#', ' ')</c>.
+            </summary>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.TableGraphFormatInfo.GetFormat(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.TableGraphFormatInfo.FormatCore(Hamiltonian.Concepts.Graph)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.TableGraphFormatInfo.ParseCore(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:Hamiltonian.Concepts.Graph">
             <summary>
             Represents a Hamiltonian graph.
@@ -271,41 +368,6 @@
         <member name="P:Hamiltonian.Concepts.Graph.System#Collections#Generic#IReadOnlyCollection{System#Boolean}#Count">
             <inheritdoc/>
         </member>
-        <member name="P:Hamiltonian.Concepts.Graph.ParsingFormatPattern">
-            <remarks>
-            Pattern:<br/>
-            <code>^(\\d+):(\\d+)(:([01]{4,}))?$</code><br/>
-            Options:<br/>
-            <code>RegexOptions.Compiled</code><br/>
-            Explanation:<br/>
-            <code>
-            ○ Match if at the beginning of the string.<br/>
-            ○ 1st capture group.<br/>
-                ○ Match a Unicode digit atomically at least once.<br/>
-            ○ Match ':'.<br/>
-            ○ 2nd capture group.<br/>
-                ○ Match a Unicode digit greedily at least once.<br/>
-            ○ Optional (greedy).<br/>
-                ○ 3rd capture group.<br/>
-                    ○ Match ':'.<br/>
-                    ○ 4th capture group.<br/>
-                        ○ Match a character in the set [01] greedily at least 4 times.<br/>
-            ○ Match if at the end of the string or if before an ending newline.<br/>
-            </code>
-            </remarks>
-        </member>
-        <member name="P:Hamiltonian.Concepts.Graph.OnStatePattern">
-            <remarks>
-            Pattern:<br/>
-            <code>1</code><br/>
-            Options:<br/>
-            <code>RegexOptions.Compiled</code><br/>
-            Explanation:<br/>
-            <code>
-            ○ Match '1'.<br/>
-            </code>
-            </remarks>
-        </member>
         <member name="P:Hamiltonian.Concepts.Graph.Item(System.Int32)">
             <summary>
             Gets or sets the state at the specified index.
@@ -391,6 +453,12 @@
         <member name="M:Hamiltonian.Concepts.Graph.System#Collections#Generic#IEnumerable{System#Boolean}#GetEnumerator">
             <inheritdoc/>
         </member>
+        <member name="M:Hamiltonian.Concepts.Graph.TryParse(System.String,Hamiltonian.Concepts.Graph@)">
+            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Graph.TryParse(System.String,System.IFormatProvider,Hamiltonian.Concepts.Graph@)">
+            <inheritdoc/>
+        </member>
         <member name="M:Hamiltonian.Concepts.Graph.Empty(System.Int32,System.Int32)">
             <summary>
             Generates an empty graph with the specified number of rows and columns.
@@ -421,13 +489,7 @@
             <para><c>data</c> can be omitted. If <c>data</c> is omitted, the generated graph will set all cells "off".</para>
             </remarks>
         </member>
-        <member name="M:Hamiltonian.Concepts.Graph.TryParse(System.String,Hamiltonian.Concepts.Graph@)">
-            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
-        </member>
-        <member name="M:Hamiltonian.Concepts.Graph.System#IParsable{Hamiltonian#Concepts#Graph}#TryParse(System.String,System.IFormatProvider,Hamiltonian.Concepts.Graph@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Concepts.Graph.System#IParsable{Hamiltonian#Concepts#Graph}#Parse(System.String,System.IFormatProvider)">
+        <member name="M:Hamiltonian.Concepts.Graph.Parse(System.String,System.IFormatProvider)">
             <inheritdoc/>
         </member>
         <member name="M:Hamiltonian.Concepts.Graph.op_Equality(Hamiltonian.Concepts.Graph,Hamiltonian.Concepts.Graph)">

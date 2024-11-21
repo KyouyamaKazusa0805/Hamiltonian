@@ -97,13 +97,6 @@ public sealed partial class Graph :
 	int IReadOnlyCollection<bool>.Count => Length;
 
 
-	[GeneratedRegex("""^(\d+):(\d+)(:([01]{4,}))?$""", RegexOptions.Compiled)]
-	private static partial Regex ParsingFormatPattern { get; }
-
-	[GeneratedRegex("1", RegexOptions.Compiled)]
-	private static partial Regex OnStatePattern { get; }
-
-
 	/// <summary>
 	/// Gets or sets the state at the specified index.
 	/// </summary>
@@ -194,45 +187,14 @@ public sealed partial class Graph :
 	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
 	public string ToString(string? format)
 	{
-		switch (format)
+		GraphFormatInfo formatter = format switch
 		{
-			case null or "b":
-			{
-				var charSequence = (stackalloc char[Size]);
-				for (var i = 0; i < Size; i++)
-				{
-					charSequence[i] = _sequence[i] ? '1' : '0';
-				}
-				return charSequence.ToString();
-			}
-			case "bs":
-			{
-				var charSequence = (stackalloc char[Size]);
-				for (var i = 0; i < Size; i++)
-				{
-					charSequence[i] = _sequence[i] ? '1' : '0';
-				}
-				return $"{RowsLength}:{ColumnsLength}:{charSequence}";
-			}
-			case "c":
-			{
-				const char used = '#', unused = ' ';
-				var sb = new StringBuilder();
-				for (var i = 0; i < Size; i++)
-				{
-					sb.Append(_sequence[i] ? used : unused);
-					if ((i + 1) % ColumnsLength == 0)
-					{
-						sb.AppendLine();
-					}
-				}
-				return sb.RemoveFrom(^Environment.NewLine.Length).ToString();
-			}
-			default:
-			{
-				throw new FormatException();
-			}
-		}
+			null or "b" => new OnOffGraphFormatInfo { WithSize = false },
+			"bs" => new OnOffGraphFormatInfo(),
+			"c" => new TableGraphFormatInfo(),
+			_ => throw new FormatException()
+		};
+		return formatter.FormatCore(this);
 	}
 
 	/// <summary>
@@ -307,6 +269,28 @@ public sealed partial class Graph :
 	}
 
 
+	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
+	public static bool TryParse(string? s, [NotNullWhen(true)] out Graph? result) => TryParse(s, null, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(string? s, IFormatProvider? provider, [NotNullWhen(true)] out Graph? result)
+	{
+		try
+		{
+			if (s is null)
+			{
+				throw new FormatException();
+			}
+			result = Parse(s, provider);
+			return true;
+		}
+		catch (FormatException)
+		{
+			result = null;
+			return false;
+		}
+	}
+
 	/// <summary>
 	/// Generates an empty graph with the specified number of rows and columns.
 	/// </summary>
@@ -335,57 +319,11 @@ public sealed partial class Graph :
 	/// </para>
 	/// <para><c>data</c> can be omitted. If <c>data</c> is omitted, the generated graph will set all cells "off".</para>
 	/// </remarks>
-	public static Graph Parse(string s)
-	{
-		switch (ParsingFormatPattern.Match(s))
-		{
-			case { Success: true, Groups: [_, { Value: var a }, { Value: var b }, _, { Value: var c }] }:
-			{
-				if (c == string.Empty)
-				{
-					return new(int.Parse(a), int.Parse(b));
-				}
-
-				var result = new Graph(int.Parse(a), int.Parse(b));
-				foreach (var match in OnStatePattern.EnumerateMatches(c))
-				{
-					result[match.Index] = true;
-				}
-				return result;
-			}
-			default:
-			{
-				throw new FormatException();
-			}
-		}
-	}
-
-	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
-	public static bool TryParse(string? s, [NotNullWhen(true)] out Graph? result)
-	{
-		try
-		{
-			if (s is null)
-			{
-				throw new FormatException();
-			}
-
-			result = Parse(s);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = null;
-			return false;
-		}
-	}
+	public static Graph Parse(string s) => Parse(s, null);
 
 	/// <inheritdoc/>
-	static bool IParsable<Graph>.TryParse(string? s, IFormatProvider? provider, [NotNullWhen(true)] out Graph? result)
-		=> TryParse(s, out result);
-
-	/// <inheritdoc/>
-	static Graph IParsable<Graph>.Parse(string s, IFormatProvider? provider) => Parse(s);
+	public static Graph Parse(string s, IFormatProvider? provider)
+		=> provider switch { GraphFormatInfo g => g.ParseCore(s), _ => new OnOffGraphFormatInfo().ParseCore(s) };
 
 
 	/// <inheritdoc/>

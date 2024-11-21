@@ -10,4 +10,5 @@ global using System.Text;
 global using System.Text.RegularExpressions;
 global using System.Threading;
 global using Hamiltonian.Concepts;
+global using Hamiltonian.Concepts.Formatting;
 global using Hamiltonian.Solving;

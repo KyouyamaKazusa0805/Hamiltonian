@@ -63,7 +63,7 @@ public readonly ref struct Generator(int rows, int columns)
 		ArgumentOutOfRangeException.ThrowIfLessThan(minFillingRate, 0);
 		ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(minFillingRate, 1);
 		ArgumentOutOfRangeException.ThrowIfLessThan(maxFillingRate, 0);
-		ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(maxFillingRate, 1);
+		ArgumentOutOfRangeException.ThrowIfGreaterThan(maxFillingRate, 1);
 		ArgumentOutOfRangeException.ThrowIfEqual(minFillingRate > maxFillingRate, true);
 
 		while (true)

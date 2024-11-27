@@ -7,6 +7,18 @@
 public static class GraphTransformation
 {
 	/// <summary>
+	/// Rotate a coordinate clockwise.
+	/// </summary>
+	/// <param name="coordinate">The coordinate.</param>
+	/// <param name="rows">The number of rows.</param>
+	/// <param name="columns">The number of columns.</param>
+	/// <returns>The result.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
+	public static Coordinate RotateClockwise(this Coordinate coordinate, int rows, int columns)
+		=> new(columns - coordinate.Y - 1, coordinate.X);
+
+	/// <summary>
 	/// Rotate a graph clockwise.
 	/// </summary>
 	/// <param name="graph">The graph.</param>
@@ -21,9 +33,9 @@ public static class GraphTransformation
 		// 4 5 6  ->  8 5 2
 		// 7 8 9      9 6 3
 		var result = new bool[rows, columns];
-		for (int i = 0; i < rows; ++i)
+		for (var i = 0; i < rows; i++)
 		{
-			for (int j = 0; j < columns; ++j)
+			for (var j = 0; j < columns; j++)
 			{
 				result[i, j] = matrix[columns - j - 1, i];
 			}
@@ -46,9 +58,9 @@ public static class GraphTransformation
 		// 4 5 6  ->  2 5 8
 		// 7 8 9      1 4 7
 		var result = new bool[rows, columns];
-		for (int i = 0; i < graph.RowsLength; i++)
+		for (var i = 0; i < graph.RowsLength; i++)
 		{
-			for (int j = 0; j < graph.ColumnsLength; j++)
+			for (var j = 0; j < graph.ColumnsLength; j++)
 			{
 				result[rows - j - 1, i] = matrix[i, j];
 			}

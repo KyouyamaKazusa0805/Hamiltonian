@@ -81,7 +81,7 @@ public readonly ref struct Generator(int rows, int columns)
 			}
 			catch (OperationCanceledException)
 			{
-				break;
+				goto NextLoop;
 			}
 			catch (InvalidOperationException)
 			{

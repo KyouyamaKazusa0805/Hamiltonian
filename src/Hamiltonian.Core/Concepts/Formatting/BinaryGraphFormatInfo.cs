@@ -30,7 +30,7 @@ public sealed partial class OnOffGraphFormatInfo : GraphFormatInfo
 		{
 			charSequence[i] = graph[i] ? '1' : '0';
 		}
-		return WithSize ? charSequence.ToString() : $"{graph.RowsLength}:{graph.ColumnsLength}:{charSequence}";
+		return WithSize ? $"{graph.RowsLength}:{graph.ColumnsLength}:{charSequence}" : charSequence.ToString();
 	}
 
 	/// <inheritdoc/>

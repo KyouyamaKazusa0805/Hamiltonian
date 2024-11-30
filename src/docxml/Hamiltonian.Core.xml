@@ -153,6 +153,30 @@
             <returns>The character.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is out of range.</exception>
         </member>
+        <member name="T:Hamiltonian.Concepts.Formatting.GraphFormatInfo">
+            <summary>
+            Represents a graph format information object.
+            </summary>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.GraphFormatInfo.GetFormat(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.GraphFormatInfo.FormatCore(Hamiltonian.Concepts.Graph)">
+            <summary>
+            Formats a <see cref="T:Hamiltonian.Concepts.Graph"/> into a <see cref="T:System.String"/> value.
+            </summary>
+            <param name="graph">The graph instance.</param>
+            <returns>The formatted string value.</returns>
+        </member>
+        <member name="M:Hamiltonian.Concepts.Formatting.GraphFormatInfo.ParseCore(System.String)">
+            <summary>
+            Parses a <see cref="T:System.String"/> value, converting it into a <see cref="T:Hamiltonian.Concepts.Graph"/>.
+            </summary>
+            <param name="str">The string value to be parsed.</param>
+            <returns>The converted <see cref="T:Hamiltonian.Concepts.Graph"/> instance.</returns>
+            <exception cref="T:System.FormatException">Throws when the parsing operation has encountered an unexpected error.</exception>
+            <exception cref="T:System.NotSupportedException">Throws when the parsing operation is not supported.</exception>
+        </member>
         <member name="T:Hamiltonian.Concepts.Formatting.OnOffGraphFormatInfo">
             <summary>
             Represents a format information object that uses "on" and "off" state to format a graph.
@@ -206,30 +230,6 @@
         </member>
         <member name="M:Hamiltonian.Concepts.Formatting.OnOffGraphFormatInfo.ParseCore(System.String)">
             <inheritdoc/>
-        </member>
-        <member name="T:Hamiltonian.Concepts.Formatting.GraphFormatInfo">
-            <summary>
-            Represents a graph format information object.
-            </summary>
-        </member>
-        <member name="M:Hamiltonian.Concepts.Formatting.GraphFormatInfo.GetFormat(System.Type)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Hamiltonian.Concepts.Formatting.GraphFormatInfo.FormatCore(Hamiltonian.Concepts.Graph)">
-            <summary>
-            Formats a <see cref="T:Hamiltonian.Concepts.Graph"/> into a <see cref="T:System.String"/> value.
-            </summary>
-            <param name="graph">The graph instance.</param>
-            <returns>The formatted string value.</returns>
-        </member>
-        <member name="M:Hamiltonian.Concepts.Formatting.GraphFormatInfo.ParseCore(System.String)">
-            <summary>
-            Parses a <see cref="T:System.String"/> value, converting it into a <see cref="T:Hamiltonian.Concepts.Graph"/>.
-            </summary>
-            <param name="str">The string value to be parsed.</param>
-            <returns>The converted <see cref="T:Hamiltonian.Concepts.Graph"/> instance.</returns>
-            <exception cref="T:System.FormatException">Throws when the parsing operation has encountered an unexpected error.</exception>
-            <exception cref="T:System.NotSupportedException">Throws when the parsing operation is not supported.</exception>
         </member>
         <member name="T:Hamiltonian.Concepts.Formatting.TableGraphFormatInfo">
             <summary>
